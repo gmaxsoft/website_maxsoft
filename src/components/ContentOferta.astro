@@ -1,0 +1,422 @@
+---
+const { langPrefix } = Astro.props;
+
+// Ustaw domyślną wartość, jeśli nie zostanie przekazana (np. "/pl")
+const prefix = langPrefix || "/pl";
+---
+
+<!-- banner -->
+<div class="mil-inner-banner">
+  <div class="mil-animation-frame">
+    <div
+      class="mil-animation mil-position-4 mil-dark mil-scale"
+      data-value-1="6"
+      data-value-2="1.4"
+    >
+    </div>
+  </div>
+  <div class="mil-banner-content mil-up">
+    <div class="container">
+      <ul class="mil-breadcrumbs mil-mb-60">
+        <li><a href="/pl">Start</a></li>
+        <li><a href="/pl/oferta">Oferta</a></li>
+      </ul>
+      <h1 class="mil-mb-60">
+        Projektowanie <span class="mil-thin">Systemów</span><br /><span
+          class="mil-thin">Zarządzania</span
+        > firmą
+      </h1>
+      <a
+        href="#service"
+        class="mil-link mil-dark mil-arrow-place mil-down-arrow"
+      >
+        <span>Dowiedz się więcej</span>
+      </a>
+    </div>
+  </div>
+</div>
+<!-- banner end -->
+
+<!-- service -->
+<section id="service">
+  <div class="container mil-p-120-90">
+    <div class="row justify-content-between">
+      <div class="col-lg-4 mil-relative mil-mb-90">
+        <h4 class="mil-up mil-mb-30">
+          Ogranicza <span class="mil-thin">Nas</span>
+          tylko<br /><span class="mil-thin">Wyobraźnia</span>
+        </h4>
+        <p class="mil-up mil-mb-30 mil-text-justify">
+          Specjalizujemy się w tworzeniu systemów CRM,ERP, ale zajmujemy się też
+          mniejszymi realizacjami jak tworzenie stron www. Każdy projekt
+          tworzymy indywidualnie, dbając o szczegóły i by odpowiadał Twoim
+          oczekiwaniom. Zapewniamy również kompleksową obsługę: rozbudowę,
+          optymalizację, aktualizacje i bieżące wsparcie techniczne. Wieloletnie
+          doświadczenie pozwala nam realizować róznego typu projekty, które
+          wyróżniają się funkcjonalnością i skutecznością.
+        </p>
+        <div class="mil-up">
+          <a
+            href="#accordion"
+            class="mil-link mil-dark mil-arrow-place noclick"
+          >
+            <span>Nasze Usługi</span>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="mil-accordion-group mil-up" id="accordion">
+          <div class="mil-accordion-menu">
+            <p class="mil-accordion-head">Systemy CMS,CRM,ERP</p>
+
+            <div class="mil-symbol mil-h3">
+              <div class="mil-plus">+</div>
+              <div class="mil-minus">-</div>
+            </div>
+          </div>
+          <div class="mil-accordion-content">
+            <p class="mil-mb-30 mil-text-justify">
+              Wdrożymy i zapewnimy systemy dla zarządzania małych i dużych firm!
+              Darmowe wsparcie 24/7. Systemy przygotowane pod indywidualne
+              potrzeby klienta.
+            </p>
+          </div>
+        </div>
+
+        <div class="mil-accordion-group mil-up">
+          <div class="mil-accordion-menu">
+            <p class="mil-accordion-head">Profesjonalne strony WWW</p>
+
+            <div class="mil-symbol mil-h3">
+              <div class="mil-plus">+</div>
+              <div class="mil-minus">-</div>
+            </div>
+          </div>
+          <div class="mil-accordion-content">
+            <p class="mil-mb-30 mil-text-justify">
+              Indywidualne projekty stron internetowych oparte o systemy
+              zarządzania treścią CMS takie jak WordPress czy Systemy Autorskie
+              na indywidualne zamówienie.
+            </p>
+          </div>
+        </div>
+
+        <div class="mil-accordion-group mil-up">
+          <div class="mil-accordion-menu">
+            <p class="mil-accordion-head">Bazy Danych</p>
+
+            <div class="mil-symbol mil-h3">
+              <div class="mil-plus">+</div>
+              <div class="mil-minus">-</div>
+            </div>
+          </div>
+          <div class="mil-accordion-content">
+            <p class="mil-mb-30 mil-text-justify">
+              Projektowanie i optymalizacja baz danych. Optymalizacja
+              wykonywania zapytań. Pracujemy na bazach relacyjnych jak SQL,
+              MySQL, PostgreSQL, Oracle Database oraz nierelacyjnych jak np.
+              MongoDB.
+            </p>
+          </div>
+        </div>
+
+        <div class="mil-accordion-group mil-up">
+          <div class="mil-accordion-menu">
+            <p class="mil-accordion-head">Sklepy internetowe</p>
+
+            <div class="mil-symbol mil-h3">
+              <div class="mil-plus">+</div>
+              <div class="mil-minus">-</div>
+            </div>
+          </div>
+          <div class="mil-accordion-content">
+            <p class="mil-mb-30 mil-text-justify">
+              Tworzymy nowoczesne, responsywne sklepy internetowe oparte o różne
+              oprogramowanie w tym o PrestaShop, WooCommerce oraz Magento.
+            </p>
+          </div>
+        </div>
+
+        <div class="mil-accordion-group mil-up">
+          <div class="mil-accordion-menu">
+            <p class="mil-accordion-head">Usługi hostingowe</p>
+
+            <div class="mil-symbol mil-h3">
+              <div class="mil-plus">+</div>
+              <div class="mil-minus">-</div>
+            </div>
+          </div>
+          <div class="mil-accordion-content">
+            <p class="mil-mb-30 mil-text-justify">
+              Świadczymy usługi hostingu domen, bazy danych, kont e-mail i FTP.
+              Oferujemy także profesjonalną pomoc przy konfiguracji i
+              zarządzaniu całą platformą hostingową.
+            </p>
+          </div>
+        </div>
+
+        <div class="mil-accordion-group mil-up">
+          <div class="mil-accordion-menu">
+            <p class="mil-accordion-head">Instalacje certyfikatów SSL</p>
+
+            <div class="mil-symbol mil-h3">
+              <div class="mil-plus">+</div>
+              <div class="mil-minus">-</div>
+            </div>
+          </div>
+          <div class="mil-accordion-content">
+            <p class="mil-mb-30 mil-text-justify">
+              Pomożemy Ci zainstalować certyfikaty SSL oraz zmodyfikować i
+              zoptymalizować stronę internetową tak aby mogła sprostać
+              najwyższym potrzebom bezpieczeństwa.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- service end -->
+
+<!-- prices -->
+<section class="mil-dark-bg">
+  <div class="mi-invert-fix">
+    <div class="container mil-p-120-120">
+      <div class="mil-center">
+        <h2 class="mil-muted mil-up mil-mb-30">
+          Rozsądne <span class="mil-thin">ceny</span>
+          <br />za innowacyjne <span class="mil-thin">rozwiązania</span>
+        </h2>
+        <p class="mil-light-soft mil-up mil-mb-120 mil-text-justify">
+          W naszej firmie stosujemy unikalne podejście do projektowania systemów
+          CRM i tworzenia stron internetowych.<br />Wierzymy w tworzenie z myślą
+          o doświadczeniu użytkownika i funkcjonalności.
+        </p>
+      </div>
+
+      <a
+        href="/pl/kontakt"
+        class="mil-price-card mil-choose mil-accent-cursor mil-up"
+      >
+        <div class="row align-items-center">
+          <div class="col-lg-2">
+            <div class="mil-price-number mil-mb-30">
+              <span class="mil-muted mil-thin">Od</span>
+              <span class="mil-accent">150</span>
+              <span class="mil-muted mil-thin">PLN</span>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <h5 class="mil-muted mil-mb-30">
+              Instalacje Certyfikatów<br />SSL
+            </h5>
+          </div>
+          <div class="col-lg-4">
+            <p class="mil-light-soft mil-mb-30 mil-text-justify">
+              SSL wpływa na zaufanie użytkowników, bezpieczeństwo danych a także
+              jest często wymogiem dla płatności online i zgodności z przepisami
+              o ochronie danych (RODO).
+            </p>
+          </div>
+          <div class="col-lg-2">
+            <div class="mil-adaptive-right mil-mb-30">
+              <div class="mil-button mil-icon-button-sm mil-arrow-place"></div>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a
+        href="/pl/kontakt"
+        class="mil-price-card mil-choose mil-accent-cursor mil-up"
+      >
+        <div class="row align-items-center">
+          <div class="col-lg-2">
+            <div class="mil-price-number mil-mb-30">
+              <span class="mil-muted mil-thin">Od</span>
+              <span class="mil-accent">850</span>
+              <span class="mil-muted mil-thin">PLN</span>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <h5 class="mil-muted mil-mb-30">
+              Aktualizacja starej<br />strony www
+            </h5>
+          </div>
+          <div class="col-lg-4">
+            <p class="mil-light-soft mil-mb-30 mil-text-justify">
+              Aktualizacje Twojej strony firmowej + wsparcie 24/7 od zespołu
+              ekspertów. Bezpłatna wycena oraz Szybka oferta.
+            </p>
+          </div>
+          <div class="col-lg-2">
+            <div class="mil-adaptive-right mil-mb-30">
+              <div class="mil-button mil-icon-button-sm mil-arrow-place"></div>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a
+        href="/pl/kontakt"
+        class="mil-price-card mil-choose mil-accent-cursor mil-up"
+      >
+        <div class="row align-items-center">
+          <div class="col-lg-2">
+            <div class="mil-price-number mil-mb-30">
+              <span class="mil-muted mil-thin">Od</span>
+              <span class="mil-accent">1200</span>
+              <span class="mil-muted mil-thin">PLN</span>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <h5 class="mil-muted mil-mb-30">
+              Tworzenie unikalnych <br />stron www
+            </h5>
+          </div>
+          <div class="col-lg-4">
+            <p class="mil-light-soft mil-mb-30 mil-text-justify">
+              Nasze produkcje charakteryzują się oryginalnymi pomysłami z
+              zachowaniem najwyższych standardów technicznych i wizualnych.
+            </p>
+          </div>
+          <div class="col-lg-2">
+            <div class="mil-adaptive-right mil-mb-30">
+              <div class="mil-button mil-icon-button-sm mil-arrow-place"></div>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a
+        href="/pl/kontakt"
+        class="mil-price-card mil-choose mil-accent-cursor mil-up mil-mb-60"
+      >
+        <div class="row align-items-center">
+          <div class="col-lg-2">
+            <div class="mil-price-number mil-mb-30">
+              <span class="mil-muted mil-thin">Od</span>
+              <span class="mil-accent">8500</span>
+              <span class="mil-muted mil-thin">PLN</span>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <h5 class="mil-muted mil-mb-30">
+              Tworzenie Systemów<br />Zarządzania firmą CRM
+            </h5>
+          </div>
+          <div class="col-lg-4">
+            <p class="mil-light-soft mil-mb-30 mil-text-justify">
+              System CRM wspiera marketing, sprzedaż i obsługę. Zbuduj lepsze
+              relacje z klientami. Wszystko w jednym miejscu bez Excela.
+            </p>
+          </div>
+          <div class="col-lg-2">
+            <div class="mil-adaptive-right mil-mb-30">
+              <div class="mil-button mil-icon-button-sm mil-arrow-place"></div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <div class="mil-center">
+        <a href="/pl/kontakt" class="mil-button mil-arrow-place">
+          <span>Poproś o ofertę</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- prices end -->
+
+<!-- other services -->
+<section>
+  <div class="container mil-p-120-90">
+    <div class="row align-items-center mil-mb-30">
+      <div class="col-lg-6 mil-mb-30">
+        <h3 class="mil-up">Nasze systemy</h3>
+      </div>
+      <div class="col-lg-6 mil-mb-30">
+        <div class="mil-adaptive-right mil-up">
+          <a href="/pl/kontakt" class="mil-link mil-dark mil-arrow-place">
+            <span>Zapytaj</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <a
+          href="https://cms.maxsoft.pl"
+          class="mil-service-card-lg mil-other-card mil-more mil-mb-30"
+        >
+          <h4 class="mil-up mil-mb-30">
+            Systemy CMS<br /><span class="mil-thin"
+              >Zarządzanie stroną internetową</span
+            >
+          </h4>
+          <p class="mil-descr mil-up mil-mb-30">
+            Umożliwiają one łatwe zarządzanie treścią na stronach internetowych
+            bez konieczności posiadania wiedzy programistycznej.
+          </p>
+          <ul class="mil-service-list mil-dark mil-mb-30">
+            <li class="mil-up">Łatwość obsługi</li>
+            <li class="mil-up">Rozszerzalność</li>
+            <li class="mil-up">Optymalizacja SEO</li>
+            <li class="mil-up">Szybkie wprowadzanie zmian</li>
+          </ul>
+          <div class="mil-link mil-dark mil-arrow-place mil-up">
+            <span>Zobacz więcej</span>
+          </div>
+        </a>
+      </div>
+      <div class="col-lg-4">
+        <a
+          href="https://crm.maxsoft.pl"
+          class="mil-service-card-lg mil-other-card mil-more mil-mb-30"
+        >
+          <h4 class="mil-up mil-mb-30">
+            Systemy CRM<br /><span class="mil-thin"
+              >Zarządzanie Twoją Firmą</span
+            >
+          </h4>
+          <p class="mil-descr mil-up mil-mb-30">
+            Zarządzania relacjami z Centralizacja danych o kliencie. Pozwalają
+            na usprawnienie procesów sprzedażowych.
+          </p>
+          <ul class="mil-service-list mil-dark mil-mb-30">
+            <li class="mil-up">Łatwość obsługi</li>
+            <li class="mil-up">Rozszerzalność</li>
+            <li class="mil-up">Centralizacja danych</li>
+            <li class="mil-up">Analiza i raportowanie</li>
+          </ul>
+          <div class="mil-link mil-dark mil-arrow-place mil-up">
+            <span>Zobacz więcej</span>
+          </div>
+        </a>
+      </div>
+      <div class="col-lg-4">
+        <a
+          href="https://erp.maxsoft.pl"
+          class="mil-service-card-lg mil-other-card mil-more mil-mb-30"
+        >
+          <h4 class="mil-up mil-mb-30">
+            Systemy ERP<br />
+            <span class="mil-thin">Zarządzanie Twoim przedsiębiorstwem</span>
+          </h4>
+          <p class="mil-descr mil-up mil-mb-30">
+            Zarządzania kluczowymi procesami w przedsiębiorstwie, takimi jak
+            finanse, kadry, produkcja, logistyka i sprzedaż.
+          </p>
+          <ul class="mil-service-list mil-dark mil-mb-30">
+            <li class="mil-up">Łatwość obsługi</li>
+            <li class="mil-up">Rozszerzalność</li>
+            <li class="mil-up">Automatyzacja procesów</li>
+            <li class="mil-up">Integracje</li>
+          </ul>
+          <div class="mil-link mil-dark mil-arrow-place mil-up">
+            <span>Zobacz więcej</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- other services end -->

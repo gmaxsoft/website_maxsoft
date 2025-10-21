@@ -1,0 +1,63 @@
+---
+export async function getStaticPaths() {
+  // Zdefiniuj listę obsługiwanych języków (lub innych dynamicznych parametrów)
+  const supportedLanguages = ["pl", "en"];
+
+  // Zwróć tablicę obiektów 'params' dla każdej ścieżki
+  return supportedLanguages.map((lang) => ({
+    params: { lang }, // Tutaj 'lang' musi pasować do nazwy katalogu [lang]
+  }));
+}
+
+const { lang } = Astro.params;
+
+const content = {
+  pl: {
+    title: "Błąd 404 - Strona nie znaleziona",
+    heading: "Oops! Strona nie znaleziona.",
+    message:"Wygląda na to, że ten adres URL jest niepoprawny lub strona została usunięta.",
+    button: "Wróć na stronę główną",
+  },
+  en: {
+    title: "Error 404 - Page not found",
+    heading: "Oops! Page not found.",
+    message:"It looks like this URL is incorrect or the page has been deleted.",
+    button: "Go to the homepage",
+  },
+};
+
+// Sprawdź, czy język jest wspierany, jeśli nie, użyj domyślnego
+const currentLang = typeof lang === "string" && lang in content ? lang : "pl";
+const pageContent = content[currentLang as keyof typeof content];
+---
+
+<!-- 404 -->
+<div class="mil-404-banner mil-dark-bg">
+  <div class="mil-animation-frame">
+    <div
+      class="mil-animation mil-position-4 mil-scale"
+      data-value-1="9"
+      data-value-2="1.4"
+      style="right: 40%;"
+    >
+    </div>
+  </div>
+  <div class="mi-invert-fix mil-up">
+    <div class="container">
+      <div class="mil-404-frame">
+        <div class="mil-scale-frame">
+          <h1 class="mil-404" data-text="404">404</h1>
+        </div>
+
+        <h4 class="mil-404-text mil-dark mil-mb-60">
+          {pageContent.heading}
+          {pageContent.message}
+        </h4>
+        <a href={`/${currentLang}`} class="mil-button mil-arrow-place">
+          <span>{pageContent.button}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 404 end -->

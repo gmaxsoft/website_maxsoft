@@ -1,0 +1,151 @@
+---
+const { langPrefix } = Astro.props;
+
+// Ustaw domyślną wartość, jeśli nie zostanie przekazana (np. "/pl")
+const prefix = langPrefix || "/pl";
+---
+
+<!-- banner -->
+<div class="mil-dark-bg">
+  <div class="mil-inner-banner">
+    <div class="mi-invert-fix">
+      <div class="mil-banner-content mil-up">
+        <div class="mil-animation-frame">
+          <div
+            class="mil-animation mil-position-4 mil-scale"
+            data-value-1="6"
+            data-value-2="1.4"
+          >
+          </div>
+        </div>
+        <div class="container">
+          <ul class="mil-breadcrumbs mil-light mil-mb-60">
+            <li><a href="/pl">Start</a></li>
+            <li><a href="/pl/wspolpraca">Współpraca</a></li>
+          </ul>
+          <h1 class="mil-muted mil-mb-60">
+            <span class="mil-thin">Ty wyznaczasz</span> Cel<br /><span
+              class="mil-thin">My</span
+            > dostarczamy rezultaty
+          </h1>
+          <a
+            href="#services"
+            class="mil-link mil-accent mil-arrow-place mil-down-arrow"
+          >
+            <span>Współpraca</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- banner end -->
+
+  <!-- services -->
+  <section id="services">
+    <div class="mi-invert-fix">
+      <div class="container mil-p-120-60">
+        <div class="row">
+          <div class="col-lg-5">
+            <div class="mil-lines-place mil-light"></div>
+          </div>
+          <div class="col-lg-7">
+            <div class="row">
+              <div class="col-md-6 col-lg-6">
+                <a
+                  href="/pl/oferta"
+                  class="mil-service-card-lg mil-more mil-accent-cursor mil-offset"
+                >
+                  <h4 class="mil-muted mil-up mil-mb-30">Współpraca B2B</h4>
+                  <p class="mil-descr mil-light-soft mil-up mil-mb-30">
+                    Nawiążemy współprace związaną z wzajemną wymianą usług i
+                    rozszerzaniem oferty dla klientów końcowych obu firm.
+                    Posiadamy szerokie doświadczenie w realizacjach
+                    przeprowadzanych dla firm.
+                  </p>
+                  <div class="mil-link mil-accent mil-arrow-place mil-up">
+                    <span>Sprawdź usługi</span>
+                  </div>
+                </a>
+              </div>
+              <div class="col-md-6 col-lg-6">
+                <a
+                  href="/pl/oferta"
+                  class="mil-service-card-lg mil-more mil-accent-cursor"
+                >
+                  <h4 class="mil-muted mil-up mil-mb-30">Doradztwo IT</h4>
+                  <p class="mil-descr mil-light-soft mil-up mil-mb-30">
+                    Pomożemy Ci zwiększyć efektywność Twojej firmy! Przeprowadź
+                    transformację cyfrową! Wykorzystaj IT do stworzenia przewagi
+                    konkurencyjnej na rynku.
+                  </p>
+                  <div class="mil-link mil-accent mil-arrow-place mil-up">
+                    <span>Sprawdź usługi</span>
+                  </div>
+                </a>
+              </div>
+              <div class="col-md-6 col-lg-6">
+                <a
+                  href="/pl/oferta"
+                  class="mil-service-card-lg mil-more mil-accent-cursor mil-offset"
+                >
+                  <h4 class="mil-muted mil-up mil-mb-30">
+                    Pozostałe formy współpracy
+                  </h4>
+                  <p class="mil-descr mil-light-soft mil-up mil-mb-30">
+                    Wybierz model współpracy dostosowany do aktualnych potrzeb,
+                    Podejmij decyzję w zależności od wielkości, zakresu i czasu
+                    trwania projektu.
+                  </p>
+                  <div class="mil-link mil-accent mil-arrow-place mil-up">
+                    <span>Sprawdź usługi</span>
+                  </div>
+                </a>
+              </div>
+              <div class="col-md-6 col-lg-6">
+                <a
+                  href="/pl/oferta"
+                  class="mil-service-card-lg mil-more mil-accent-cursor"
+                >
+                  <h4 class="mil-muted mil-up mil-mb-30">Outsourcing IT</h4>
+                  <p class="mil-descr mil-light-soft mil-up mil-mb-30">
+                    Możemy dostarczyć wysoce wykwalifikowanych konsultantów IT,
+                    którzy pomogą wzmocnić Twój zespół i ukończyć projekty na
+                    czas.
+                  </p>
+                  <div class="mil-link mil-accent mil-arrow-place mil-up">
+                    <span>Sprawdź usługi</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- services end -->
+
+<!-- call to action -->
+<section class="mil-soft-bg">
+  <div class="container mil-p-120-120">
+    <div class="row">
+      <div class="col-lg-10">
+        <span class="mil-suptitle mil-suptitle-right mil-suptitle-dark mil-up"
+          >Chcesz się wyróżnić? Pomożemy Ci przekształcić<br />Twój projekt w sukces.</span
+        >
+      </div>
+    </div>
+    <div class="mil-center">
+      <h2 class="mil-up mil-mb-60">
+        <span class="mil-thin">Stwórzmy wspólnie</span> nowoczesne projekty<br /><span class="mil-thin">Razem odniesiemy</span> sukces
+      </h2>
+      <div class="mil-up">
+        <a href="/pl/kontakt" class="mil-button mil-arrow-place"
+          ><span>Skontaktuj się</span></a
+        >
+      </div>
+    </div>
+  </div>
+</section>
+<!-- call to action end -->

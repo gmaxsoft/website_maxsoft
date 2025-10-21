@@ -1,0 +1,41 @@
+---
+import { icon } from '@fortawesome/fontawesome-svg-core';
+import * as SolidIconsMap from '@fortawesome/free-solid-svg-icons';
+
+// Definiowanie propsów
+const {
+  name, // np. "house"
+  size = '1x',
+  class: className,
+  ...attrs
+} = Astro.props;
+
+let faIconSVG = '';
+
+if (name) {
+  // 1. Konstruujemy **poprawną nazwę zmiennej** ikony w stylu JS: "fa" + UppersCase(name)
+  //   np. "house" -> "faHouse"
+  const iconVarName = 'fa' + name.charAt(0).toUpperCase() + name.slice(1);
+  
+  // 2. Próbujemy pobrać obiekt ikony z zaimportowanej mapy
+  const faIconDefinition = (SolidIconsMap as Record<string, any>)[iconVarName];
+  
+  // 3. Jeśli ikona istnieje, generujemy jej SVG
+  if (faIconDefinition) {
+    faIconSVG = icon(faIconDefinition, { 
+      classes: [`fa-${size}`, className] 
+    }).html[0];
+  }
+}
+---
+
+{faIconSVG ? <span set:html={faIconSVG} {...attrs} /> : <span>⚠️ Ikona "{name}" nie została znaleziona w Solid Icons.</span>}
+
+<style is:global>
+  /* Podstawowe style do wyrównania ikon SVG */
+  .fa-icon svg {
+    height: 1em; 
+    fill: currentColor;
+    vertical-align: -0.125em;
+  }
+</style>

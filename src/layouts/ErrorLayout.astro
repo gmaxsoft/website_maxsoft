@@ -1,14 +1,12 @@
 ---
 import { SEO } from "astro-seo";
-import Preloader from "../components/Preloader.astro";
 import Menu from "../components/Menu.astro";
 import Footer from "../components/Footer.astro";
-import HiddenElements from "../components/HiddenElements.astro";
 
 // Domyślne wartości dla propsów, aby uniknąć undefined
 const {
-  title = "Domyślny tytuł",
-  description = "Domyślny opis",
+  title = "Domyślny tytuł podstrony",
+  description = "Domyślny opis podstrony",
   ogImage = "/img/default-og.webp",
 } = Astro.props;
 
@@ -46,7 +44,7 @@ const isHomePage = Astro.url.pathname === `/${currentLocale}/` || Astro.url.path
   </head>
   <body>
     <div class="mil-wrapper" id="top">
-      <Preloader />
+
       <Menu />
       <div class="mil-curtain"></div>
 
@@ -70,7 +68,6 @@ const isHomePage = Astro.url.pathname === `/${currentLocale}/` || Astro.url.path
         <div class="mil-main-transition">
           <slot />
           <Footer />
-          <HiddenElements />
         </div>
       </div>
     </div>

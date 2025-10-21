@@ -1,10 +1,8 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import FaIcon from "../../components/FaIcon.astro";
-import Content from "../../components/Content.astro";
+import PageLayout from "../../layouts/PageLayout.astro";
+import ContentProjects from "../../components/ContentProjects.astro";
 import pl from '../../i18n/pl.json';
 import en from '../../i18n/en.json';
-
 // Mapa tłumaczeń
 const translations = { pl, en };
 
@@ -23,10 +21,10 @@ const { lang } = Astro.params as { lang: 'pl' | 'en' };
 const content = translations[lang]?.index || translations.pl.index;
 ---
 
-<Layout
+<PageLayout
   title={content.title}
   description={content.description}
-  ogImage="/img/default-og.jpg"
+  ogImage="/images/home-og.jpg"
 >
-<Content />
-</Layout>
+<ContentProjects />
+</PageLayout>

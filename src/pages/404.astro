@@ -1,0 +1,14 @@
+---
+export async function getStaticPaths() {
+  // Zdefiniuj listę obsługiwanych języków (lub innych dynamicznych parametrów)
+  const supportedLanguages = ['pl', 'en'];
+
+  // Zwróć tablicę obiektów 'params' dla każdej ścieżki
+  return supportedLanguages.map((lang) => ({
+    params: { lang }, // Tutaj 'lang' musi pasować do nazwy katalogu [lang]
+  }));
+}
+
+const preferredLang = "pl";
+return Astro.redirect(`/${preferredLang}/404`, 302);
+---

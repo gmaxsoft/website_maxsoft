@@ -1,0 +1,32 @@
+---
+// src/pages/[lang]/polityka_prywatnosci.astro
+
+export async function getStaticPaths() {
+  // Zdefiniuj listę obsługiwanych języków (lub innych dynamicznych parametrów)
+  const supportedLanguages = ['pl', 'en'];
+
+  // Zwróć tablicę obiektów 'params' dla każdej ścieżki
+  return supportedLanguages.map((lang) => ({
+    params: { lang }, // Tutaj 'lang' musi pasować do nazwy katalogu [lang]
+  }));
+}
+
+// Przykład użycia parametru 'lang' w komponencie (opcjonalne, ale przydatne)
+const { lang } = Astro.params;
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+    <title>Polityka prywatności | {lang.toUpperCase()}</title>
+</head>
+<body>
+    <h1>To jest strona Polityka prywatności ({lang.toUpperCase()})</h1>
+
+    {lang === 'pl' ? (
+        <p>Nasza oferta po polsku.</p>
+    ) : (
+        <p>Our offer in English.</p>
+    )}
+</body>
+</html>

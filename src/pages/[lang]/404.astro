@@ -1,0 +1,22 @@
+---
+import ErrorLayout from "../../layouts/ErrorLayout.astro";
+import ErrorContent from "../../components/ErrorContent.astro";
+
+export async function getStaticPaths() {
+  // Zdefiniuj listę obsługiwanych języków (lub innych dynamicznych parametrów)
+  const supportedLanguages = ["pl", "en"];
+
+  // Zwróć tablicę obiektów 'params' dla każdej ścieżki
+  return supportedLanguages.map((lang) => ({
+    params: { lang }, // Tutaj 'lang' musi pasować do nazwy katalogu [lang]
+  }));
+}
+
+const { lang } = Astro.params;
+// Ustaw status odpowiedzi na 404 (bardzo ważne!)
+Astro.response.status = 404;
+---
+
+<ErrorLayout>
+  <ErrorContent />
+</ErrorLayout>

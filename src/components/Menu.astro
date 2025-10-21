@@ -1,0 +1,142 @@
+---
+const { langPrefix } = Astro.props;
+
+const prefix = langPrefix || "/pl";
+---
+
+<div class="mil-menu-frame">
+    <div class="mil-frame-top mil-logo-fixed">
+        <a href={prefix} class="mil-logo">Maxsoft</a>
+        <div class="mil-menu-btn">
+            <span></span>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="mil-menu-content">
+            <div class="row">
+                <div class="col-xl-5">
+                    <nav class="mil-main-menu" id="swupMenu">
+                        <ul>
+                            <li class="mil-has-children mil-active">
+                                <a href="/pl">Start</a>
+                            </li>
+                            <li class="mil-has-children">
+                                <a href="/pl/oferta">Oferta</a>
+                            </li>
+                            <li class="mil-has-children">
+                                <a href="/pl/projekty">Projekty</a>
+                            </li>
+                            <li class="mil-has-children">
+                                <a href="/pl/wspolpraca">Współpraca</a>
+                            </li>
+                            <li class="mil-has-children">
+                                <a href="/pl/kontakt">Kontakt</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-xl-7">
+                    <div class="mil-menu-right-frame">
+                        <div class="mil-animation-in">
+                            <div class="mil-animation-frame">
+                                <div
+                                    class="mil-animation mil-position-1 mil-scale"
+                                    data-value-1="2"
+                                    data-value-2="2"
+                                >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mil-menu-right">
+                            <div class="row">
+                                <div class="col-lg-7 mil-mb-60">
+                                    <h6 class="mil-muted mil-mb-30">
+                                        Projekty
+                                    </h6>
+                                    <ul class="mil-menu-list">
+                                        <li>
+                                            <a
+                                                href="https://cms.maxsoft.pl"
+                                                class="mil-light-soft"
+                                                >Maxsoft CMS</a
+                                            >
+                                        </li>
+                                        <li>
+                                            <a
+                                                href="https://crm.maxsoft.pl"
+                                                class="mil-light-soft"
+                                                >Maxsoft CRM</a
+                                            >
+                                        </li>
+                                        <li>
+                                            <a
+                                                href="https://erp.maxsoft.pl"
+                                                class="mil-light-soft"
+                                                >Maxsoft ERP</a
+                                            >
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-5 mil-mb-60">
+                                    <h6 class="mil-muted mil-mb-30">
+                                        Pozostałe Linki
+                                    </h6>
+
+                                    <ul class="mil-menu-list">
+                                        <li>
+                                            <a
+                                                href="/pl/polityka_prywatnosci"
+                                                class="mil-light-soft"
+                                                >Polityka prywatności</a
+                                            >
+                                        </li>
+                                        <li>
+                                            <a
+                                                href="/pl/polityka_cookies"
+                                                class="mil-light-soft"
+                                                >Polityka plików cookie</a
+                                            >
+                                        </li>
+                                        <li>
+                                            <a
+                                                href="https://github.com/gmaxsoft"
+                                                rel="noreferrer nofollow"
+                                                class="mil-light-soft">Github</a
+                                            >
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mil-divider mil-mb-60"></div>
+                            <div class="row justify-content-between">
+                                <div class="col-lg-5 mil-mb-60">
+                                    <h6 class="mil-muted mil-mb-30">Lubrza</h6>
+
+                                    <p class="mil-light-soft mil-up">
+                                        66-218 Lubrza, Nowa Wioska 39<br
+                                        />Polska<br /><span class="mil-no-wrap"
+                                            >(+48) 791 821 908</span
+                                        >
+                                    </p>
+                                </div>
+                                <div class="col-lg-5 mil-mb-60">
+                                    <h6 class="mil-muted mil-mb-30">
+                                        Zielona Góra
+                                    </h6>
+
+                                    <p class="mil-light-soft">
+                                        65-463 Zielona Góra, ul.Prosta 45A<br
+                                        />Polska<br /><span class="mil-no-wrap"
+                                            >+(48) 453 645 286</span
+                                        >
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
