@@ -1,0 +1,139 @@
+---
+const { langPrefix } = Astro.props;
+const prefix = langPrefix || "/pl";
+const { data } = Astro.props;
+---
+
+<!-- banner -->
+<div class="mil-inner-banner">
+  <div class="mil-banner-content mil-center mil-up">
+    <div class="container">
+      <ul class="mil-breadcrumbs mil-center mil-mb-60">
+        <li><a href={prefix} title="Start">Start</a></li>
+        <li><a href={`${prefix}/polityka_prywatnosci`} title={data.politykatxt01}>{data.politykatxt01}</a></li>
+      </ul>
+      <h2 set:html={data.heading} />
+    </div>
+  </div>
+</div>
+<!-- banner end -->
+
+<!-- publication -->
+<section id="blog">
+  <div class="container mil-p-120-90">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <h5 class="mil-up mil-mb-30">{data.politykatxt02}</h5>
+        <p class="mil-up mil-mb-30">
+          {data.politykatxt03}
+        </p>
+        <p class="mil-up mil-mb-30">
+          {data.politykatxt04}
+        </p>
+        <p class="mil-up mil-mb-60">
+          {data.politykatxt05}
+        </p>
+        <h5 class="mil-up mil-mb-60">
+          {data.politykatxt06}
+        </h5>
+        <blockquote class="mil-up mil-mb-60">
+          <p class="mil-up mil-mb-30">
+            {data.politykatxt07}
+          </p>
+          <p class="mil-up mil-mb-30">
+            {data.politykatxt08}
+          </p>
+          <p class="mil-up mil-mb-30">
+            {data.politykatxt09}
+          </p>
+        </blockquote>
+
+        <h5 class="mil-up mil-mb-60">
+          {data.politykatxt10}
+        </h5>
+        <p class="mil-up mil-mb-30">
+          {data.politykatxt11}
+        </p>
+        <ul class="mil-up mil-mb-30" set:html={data.politykatxt35} />
+
+        <p class="mil-up mil-mb-60">
+          {data.politykatxt12}
+        </p>
+        <h5 class="mil-up mil-mb-60">
+          {data.politykatxt13}
+        </h5>
+
+        <p class="mil-up mil-mb-60">
+          {data.politykatxt14}
+        </p>
+
+        <h5 class="mil-up mil-mb-60">
+          {data.politykatxt15}
+        </h5>
+        <p class="mil-up mil-mb-30">
+          {data.politykatxt16}
+        </p>
+        <ul class="mil-up mil-mb-30">
+          <li>
+            {data.politykatxt17}
+          </li>
+          <li>
+            {data.politykatxt18}
+          </li>
+        </ul>
+        <p class="mil-up mil-mb-60">
+          {data.politykatxt19}
+        </p>
+
+        <h5 class="mil-up mil-mb-60">
+          {data.politykatxt20}
+        </h5>
+        <p class="mil-up mil-mb-30">
+          {data.politykatxt21}
+        </p>
+        <p class="mil-up mil-mb-60">
+          {data.politykatxt22}
+        </p>
+
+        <h5 class="mil-up mil-mb-60">
+          {data.politykatxt23}
+        </h5>
+        <p class="mil-up mil-mb-30">
+          {data.politykatxt24}
+        </p>
+        <p class="mil-up mil-mb-30">
+          {data.politykatxt25}
+        </p>
+        <p class="mil-up mil-mb-30">
+          {data.politykatxt26}
+        </p>
+        <p class="mil-up mil-mb-60">
+          {data.politykatxt27}
+        </p>
+
+        <h5 class="mil-up mil-mb-60">
+          {data.politykatxt28}
+        </h5>
+        <p class="mil-up mil-mb-30">
+          {data.politykatxt29}
+        </p>
+        <p class="mil-up mil-mb-60">
+          {data.politykatxt30}
+        </p>
+
+        <h5 class="mil-up mil-mb-60">
+          {data.politykatxt31}
+        </h5>
+        <p class="mil-up mil-mb-30">
+          {data.politykatxt32}
+        </p>
+        <p class="mil-up mil-mb-30">
+          {data.politykatxt33}
+        </p>
+        <p class="mil-up mil-mb-30">
+          {data.politykatxt34}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

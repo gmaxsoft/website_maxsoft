@@ -3,22 +3,39 @@ import { SEO } from "astro-seo";
 import Menu from "../components/Menu.astro";
 import Footer from "../components/Footer.astro";
 import HiddenElements from "../components/HiddenElements.astro";
+import pl from "../i18n/pl.json";
+import en from "../i18n/en.json";
 
-// Domyślne wartości dla propsów, aby uniknąć undefined
+const translations = { pl, en };
+export async function getStaticPaths() {
+  return [
+    { params: { lang: "pl" } }, // Strona dla języka polskiego
+    { params: { lang: "en" } }, // Strona dla języka angielskiego
+  ];
+}
+
+const { lang } = Astro.params as { lang: "pl" | "en" };
+const langPrefix = `/${lang}`;
+const content = translations[lang]?.index || translations.pl.index;
+const contentFooter = translations[lang].footer;
+const contentMenu = translations[lang].menu;
+
 const {
-  title = "Domyślny tytuł podstrony",
-  description = "Domyślny opis podstrony",
-  ogImage = "/img/default-og.webp",
+  title = content.title, // Tytuł strony (np. z JSON)
+  description = content.description, // Opis strony (np. z JSON)
+  canonical = Astro.url.href, // 💡 NOWY PROP: Link kanoniczny
+  currentLocale = lang, // Język strony
+  ogImage = "/img/default-og.webp", // Obrazek OG
 } = Astro.props;
-
-// Pobierz aktualny język z kontekstu Astro, domyślnie 'pl'
-const currentLocale = Astro.currentLocale || "pl";
-const isHomePage = Astro.url.pathname === `/${currentLocale}/` || Astro.url.pathname === '/';
 ---
 
 <!doctype html>
-<html lang={currentLocale}>
+<html lang={lang}>
   <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5402951867053415" crossorigin="anonymous"></script>
+    <link rel="alternate" hreflang="pl" href="https://maxsoft.pl/pl/" />
+    <link rel="alternate" hreflang="en" href="https://maxsoft.pl/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://maxsoft.pl/pl/" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
@@ -31,27 +48,26 @@ const isHomePage = Astro.url.pathname === `/${currentLocale}/` || Astro.url.path
           title: title,
           type: "website",
           image: ogImage,
-          url: Astro.url.href,
+          url: canonical, // Używamy kanonicznego URL
         },
-        image: {
-          alt: "Opis obrazu",
-        },
-      }}
-      twitter={{
-        card: "summary_large_image",
-        site: "@twoj_twitter",
+        // ...
       }}
     />
   </head>
   <body>
     <div class="mil-wrapper" id="top">
-
-      <Menu />
+      <Menu data={contentMenu} langPrefix={langPrefix} />
       <div class="mil-curtain"></div>
 
       <div class="mil-frame">
         <div class="mil-frame-top mil-logo-fixed">
-          <a href={currentLocale} class="mil-logo">Maxsoft</a>
+          <a href={langPrefix} class="mil-logo">Maxsoft</a>
+
+          <div class="mil-lang-switch">
+                <a href="/pl" class:list={["mil-lang-flag", lang === 'pl' ? 'mil-active' : '']}>PL</a>
+                <a href="/en" class:list={["mil-lang-flag", lang === 'en' ? 'mil-active' : '']}>EN</a>
+          </div>
+
           <div class="mil-menu-btn">
             <span></span>
           </div>
@@ -68,13 +84,16 @@ const isHomePage = Astro.url.pathname === `/${currentLocale}/` || Astro.url.path
       <div class="mil-content">
         <div class="mil-main-transition">
           <slot />
-          <Footer />
+          <Footer data={contentFooter} langPrefix={langPrefix} />
           <HiddenElements />
         </div>
       </div>
     </div>
 
-    <script type="module" src="/src/scripts/main.js"></script>
+    
+    <script>
+      import "../scripts/main.js";
+    </script>
   </body>
 </html>
 

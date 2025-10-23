@@ -1,6 +1,7 @@
 ---
+export const prerender = true;
+
 import Layout from '../../layouts/Layout.astro';
-import FaIcon from "../../components/FaIcon.astro";
 import Content from "../../components/Content.astro";
 import pl from '../../i18n/pl.json';
 import en from '../../i18n/en.json';
@@ -11,22 +12,33 @@ const translations = { pl, en };
 // Eksport funkcji getStaticPaths dla dynamicznego routingu
 export async function getStaticPaths() {
   return [
-    { params: { lang: 'pl' } }, // Strona dla języka polskiego
-    { params: { lang: 'en' } }  // Strona dla języka angielskiego
+    { params: { lang: 'pl' } },
+    { params: { lang: 'en' } }
   ];
 }
 
 // Pobierz parametr lang z Astro.params
 const { lang } = Astro.params as { lang: 'pl' | 'en' };
 
-// Użyj domyślnego języka 'pl', jeśli lang nie jest zdefiniowany
-const content = translations[lang]?.index || translations.pl.index;
+// 1. POBRANIE DANYCH
+const pageData = translations[lang]?.index || translations.pl.index;
+const contentFooter = translations[lang].footer;
+const contentMenu = translations[lang].menu;
+
+// 2. USTALENIE LINKU KANONICZNEGO (Astro.url.origin + ścieżka bez lang, jeśli chcesz)
+const canonicalUrl = `${Astro.url.origin}/${lang}`; // np. https://twojadomena.com/pl
+
+// 3. PRZEKAZANIE DANYCH DO LAYOUTU
 ---
 
-<Layout
-  title={content.title}
-  description={content.description}
-  ogImage="/img/default-og.jpg"
+<Layout 
+    title={pageData.title}
+    description={pageData.description}
+    ogImage={pageData.ogimage}
+    currentLocale={lang}
+    canonical={canonicalUrl}
+    contentMenu={contentMenu}
+    contentFooter={contentFooter}
 >
-<Content />
+    <Content data={pageData} />
 </Layout>

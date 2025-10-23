@@ -1,10 +1,10 @@
 ---
 export const prerender = true;
 
-import PageLayout from "../../layouts/PageLayout.astro";
-import ContentCookies from "../../components/ContentCookies.astro";
-import pl from "../../i18n/pl.json";
-import en from "../../i18n/en.json";
+import PageLayout from "../../../layouts/PageLayout.astro";
+import ContentProjects from "../../../components/ContentProjects.astro";
+import pl from "../../../i18n/pl.json";
+import en from "../../../i18n/en.json";
 
 const translations = { pl, en };
 export async function getStaticPaths() {
@@ -14,12 +14,12 @@ export async function getStaticPaths() {
 const { lang } = Astro.params as { lang: "pl" | "en" };
 
 // 1. POBRANIE DANYCH DLA STRONY "OFERTA"
-const pageData = translations[lang]?.cookies || translations.pl.cookies;
+const pageData = translations[lang]?.projekty || translations.pl.projekty;
 const contentFooter = translations[lang].footer;
 const contentMenu = translations[lang].menu;
 
 // 2. USTALENIE LINKU KANONICZNEGO
-const canonicalUrl = `${Astro.url.origin}/${lang}/polityka_cookies`; // np. https://twojadomena.com/pl/oferta
+const canonicalUrl = `${Astro.url.origin}/${lang}/projekty`; // np. https://twojadomena.com/pl/oferta
 ---
 
 <PageLayout
@@ -32,7 +32,7 @@ const canonicalUrl = `${Astro.url.origin}/${lang}/polityka_cookies`; // np. http
   contentFooter={contentFooter}
 >
   <>
-    <ContentCookies data={pageData} />
+    <ContentProjects data={pageData} />
     <div style="display:none" aria-hidden="true"></div>
   </>
 </PageLayout>

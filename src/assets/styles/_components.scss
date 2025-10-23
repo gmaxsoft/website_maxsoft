@@ -330,6 +330,45 @@ menu button
     }
 }
 
+.mil-menu-controls {
+    display: flex; // Użyj Flexboxa do wyrównania elementów
+    align-items: center; // Wyrównanie w pionie
+    
+    // Ustawienie marginesu na lewo dla przycisku menu
+    // Daje to 10px odstępu między flagami a przyciskiem
+    .mil-menu-btn { 
+        margin-left: 10px;
+    }
+}
+
+.mil-lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    pointer-events: all;
+    cursor: pointer;
+    position: absolute;
+    top: 57px;
+    right: 100px;
+
+    .mil-lang-flag {
+        font-size: 20px; // Rozmiar flagi
+        text-decoration: none;
+        opacity: 0.5; // Zmniejszamy widoczność nieaktywnej flagi
+        transition: vars.$t-md;
+
+        &:hover {
+            opacity: 0.8;
+        }
+
+        &.mil-active {
+            opacity: 1; // Aktywna flaga jest w pełni widoczna
+            cursor: pointer;
+        }
+    }
+
+    & a{color: #000; font-weight:600}
+}
 /* -------------------------------------------
 
 menu
@@ -397,6 +436,7 @@ menu
 
         & .mil-menu-right {
             padding-bottom: 60px;
+            width:100%
         }
 
         & .mil-animation-in {
@@ -2125,6 +2165,7 @@ portfolio
         & .mil-cover-frame {
             margin-bottom: 30px;
             height: calc(100vh - 360px);
+            max-height: 560px!important;
 
             @media screen and (max-width: 992px) {
                 height: auto;

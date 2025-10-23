@@ -1,0 +1,95 @@
+---
+export const prerender = true;
+
+import PageLayout from "../../../layouts/PageLayout.astro";
+import ContentProjectsSingle from "../../../components/ContentProjectsSingle.astro";
+import pl from "../../../i18n/pl.json";
+import en from "../../../i18n/en.json";
+import type { GetStaticPathsResult } from "astro";
+
+type Project = Record<string, any>;
+
+// 💡 Definicja typu dla sąsiada
+type Neighbor = {
+  slug: string | null; // slug następnego/poprzedniego (lub null jeśli nie ma)
+  title: string | null; // tytuł dla linku (opcjonalnie)
+};
+
+// 2. Funkcja getStaticPaths()
+export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+  const allTranslations = {
+    pl,
+    en,
+  };
+
+  const paths: {
+    // Parametry dla URL (ścieżki)
+    params: {
+      lang: string; // np. 'pl'
+      slug: string; // np. 'strona-firmowa-maxsoft'
+    };
+    // Właściwości, które zostaną przekazane do komponentu
+    props: {
+      projectData: Record<string, any>; // <-- TUTAJ ZASTOSUJ Record<string, any>
+      lang: string;
+      prevProject: Neighbor | null;
+      nextProject: Neighbor | null;
+    };
+  }[] = [];
+
+  for (const [lang, data] of Object.entries(allTranslations)) {
+    // Używamy klucza 'projekt', zgodnie z Twoim plikiem pl.json
+    const projectsList = (data.projekt as Project[]) || [];
+
+    projectsList.forEach((projekt, index) => {
+      // 1. Znajdź poprzedni projekt
+      const prevIndex = index - 1;
+      const prevProjectData = prevIndex >= 0 ? projectsList[prevIndex] : null;
+
+      const prevProject: Neighbor = {
+        slug: prevProjectData
+          ? `${lang}/projekty/${prevProjectData.slug}`
+          : null,
+        title: prevProjectData ? prevProjectData.title : null,
+      };
+
+      // 2. Znajdź następny projekt
+      const nextIndex = index + 1;
+      const nextProjectData =
+        nextIndex < projectsList.length ? projectsList[nextIndex] : null;
+
+      const nextProject: Neighbor = {
+        slug: nextProjectData
+          ? `${lang}/projekty/${nextProjectData.slug}`
+          : null,
+        title: nextProjectData ? nextProjectData.title : null,
+      };
+
+      paths.push({
+        params: {
+          lang: lang,
+          slug: projekt.slug,
+        },
+        props: {
+          projectData: projekt,
+          lang: lang,
+          prevProject: prevProject,
+          nextProject: nextProject,
+        },
+      });
+    });
+  }
+
+  return paths;
+}
+
+const { projectData, lang, prevProject, nextProject } = Astro.props;
+---
+
+<PageLayout>
+  <ContentProjectsSingle
+    data={projectData}
+    prevProject={prevProject}
+    nextProject={nextProject}
+  />
+</PageLayout>

@@ -1,34 +1,7 @@
 ---
-export async function getStaticPaths() {
-  // Zdefiniuj listę obsługiwanych języków (lub innych dynamicznych parametrów)
-  const supportedLanguages = ["pl", "en"];
-
-  // Zwróć tablicę obiektów 'params' dla każdej ścieżki
-  return supportedLanguages.map((lang) => ({
-    params: { lang }, // Tutaj 'lang' musi pasować do nazwy katalogu [lang]
-  }));
-}
-
-const { lang } = Astro.params;
-
-const content = {
-  pl: {
-    title: "Błąd 404 - Strona nie znaleziona",
-    heading: "Oops! Strona nie znaleziona.",
-    message:"Wygląda na to, że ten adres URL jest niepoprawny lub strona została usunięta.",
-    button: "Wróć na stronę główną",
-  },
-  en: {
-    title: "Error 404 - Page not found",
-    heading: "Oops! Page not found.",
-    message:"It looks like this URL is incorrect or the page has been deleted.",
-    button: "Go to the homepage",
-  },
-};
-
-// Sprawdź, czy język jest wspierany, jeśli nie, użyj domyślnego
-const currentLang = typeof lang === "string" && lang in content ? lang : "pl";
-const pageContent = content[currentLang as keyof typeof content];
+const { langPrefix } = Astro.props;
+const prefix = langPrefix || "/pl";
+const { data } = Astro.props;
 ---
 
 <!-- 404 -->
@@ -50,11 +23,11 @@ const pageContent = content[currentLang as keyof typeof content];
         </div>
 
         <h4 class="mil-404-text mil-dark mil-mb-60">
-          {pageContent.heading}
-          {pageContent.message}
+          {data.heading}
+          {data.message}
         </h4>
-        <a href={`/${currentLang}`} class="mil-button mil-arrow-place">
-          <span>{pageContent.button}</span>
+        <a href={`/${prefix}`} class="mil-button mil-arrow-place">
+          <span>{data.button}</span>
         </a>
       </div>
     </div>

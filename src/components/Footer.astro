@@ -1,5 +1,7 @@
 ---
-
+const { langPrefix } = Astro.props;
+const prefix = langPrefix || "/pl";
+const { data } = Astro.props;
 ---
 
 <footer class="mil-dark-bg mil-sekcja-ciemna">
@@ -10,42 +12,56 @@
           <div class="mil-muted mil-logo mil-up mil-mb-30">Maxsoft</div>
 
           <p class="mil-light-soft mil-up mil-mb-30">
-            Zapisz się na nasz newsletter:
+            {data.footertxt1}
           </p>
 
-          <form class="mil-subscribe-form mil-up">
-            <input type="email" placeholder="Wpisz swój adres e-mail" />
+          <form
+            class="mil-subscribe-form mil-up"
+            method="POST"
+            action="https://formspree.io/f/xzzjnplw"
+          >
+            <input
+              type="email"
+              name="email"
+              placeholder="Wpisz swój adres e-mail"
+              required
+            />
             <button
               type="submit"
-              class="mil-button mil-icon-button-sm mil-arrow-place"></button>
+              class="mil-button mil-icon-button-sm mil-arrow-place"
+              title="Zapisz się na Newsletter"
+              aria-label="Zapisz się na Newsletter"></button>
           </form>
 
-          <div class="mil-tags mil-light-soft">
-            <strong>Tworzenie Stron www Zielona Góra</strong>, Świebodzin,
-            aplikacje webowe, <strong>Projektowanie stron www</strong>, Systemy
-            CRM, <strong>Sklepy internetowe Zielona Góra</strong>, Sulechów,
-            Integracje Api, Optymalizacja baz danych, Projektowanie CMS
-          </div>
+          <div class="mil-tags mil-light-soft" set:html={data.footertxt2} />
         </div>
         <div class="col-md-7 col-lg-6">
           <div class="row justify-content-end">
             <div class="col-md-6 col-lg-7">
               <nav class="mil-footer-menu mil-mb-60">
                 <ul>
-                  <li class="mil-up mil-active">
-                    <a href="/pl">Start</a>
+                  <li class="mil-has-children mil-active">
+                    <a href={prefix} title="Start">Start</a>
                   </li>
-                  <li class="mil-up">
-                    <a href="pl/oferta">Oferta</a>
+                  <li class="mil-has-children">
+                    <a href={`${prefix}/oferta`} title={data.footertxt6}
+                      >{data.footertxt6}</a
+                    >
                   </li>
-                  <li class="mil-up">
-                    <a href="pl/projekty">Projekty</a>
+                  <li class="mil-has-children">
+                    <a href={`${prefix}/projekty`} title={data.footertxt7}
+                      >{data.footertxt7}</a
+                    >
                   </li>
-                  <li class="mil-up">
-                    <a href="pl/wspolpraca">Współpraca</a>
+                  <li class="mil-has-children">
+                    <a href={`${prefix}/wspolpraca`} title={data.footertxt8}
+                      >{data.footertxt8}</a
+                    >
                   </li>
-                  <li class="mil-up">
-                    <a href="pl/kontakt">Kontakt</a>
+                  <li class="mil-has-children">
+                    <a href={`${prefix}/kontakt`} title={data.footertxt9}
+                      >{data.footertxt9}</a
+                    >
                   </li>
                 </ul>
               </nav>
@@ -53,27 +69,33 @@
             <div class="col-md-6 col-lg-5">
               <ul class="mil-menu-list mil-up mil-mb-60">
                 <li>
-                  <a href="pl/polityka_prywatnosci" class="mil-light-soft"
-                    >Polityka prywatności</a
+                  <a
+                    href="/pl/polityka_prywatnosci"
+                    class="mil-light-soft"
+                    title={data.footertxt10}>{data.footertxt10}</a
                   >
                 </li>
                 <li>
-                  <a href="pl/polityka_cookies" class="mil-light-soft"
-                    >Polityka plików cookie</a
+                  <a
+                    href="/pl/polityka_cookies"
+                    class="mil-light-soft"
+                    title={data.footertxt11}>{data.footertxt11}</a
                   >
                 </li>
                 <li>
                   <a
                     href="https://www.npmjs.com/~maxsoft"
                     rel="noreferrer nofollow"
-                    class="mil-light-soft">NPM</a
+                    class="mil-light-soft"
+                    title="NPM">NPM</a
                   >
                 </li>
                 <li>
                   <a
                     href="https://github.com/gmaxsoft"
                     rel="noreferrer nofollow"
-                    class="mil-light-soft">Github</a
+                    class="mil-light-soft"
+                    title="Github">Github</a
                   >
                 </li>
               </ul>
@@ -87,21 +109,11 @@
           <div class="row justify-content-between">
             <div class="col-md-6 col-lg-5 mil-mb-60">
               <h6 class="mil-muted mil-up mil-mb-30">Lubrza</h6>
-
-              <p class="mil-light-soft mil-up">
-                66-218 Lubrza, Nowa Wioska 39<br />Polska<br /><span
-                  class="mil-no-wrap">(+48) 791 821 908</span
-                >
-              </p>
+              <p class="mil-light-soft mil-up" set:html={data.footertxt4} />
             </div>
             <div class="col-md-6 col-lg-5 mil-mb-60">
               <h6 class="mil-muted mil-up mil-mb-30">Zielona Góra</h6>
-
-              <p class="mil-light-soft mil-up">
-                65-463 Zielona Góra, ul.Prosta 45A<br />Polska<br /><span
-                  class="mil-no-wrap">+(48) 453 645 286</span
-                >
-              </p>
+              <p class="mil-light-soft mil-up" set:html={data.footertxt5} />
             </div>
           </div>
         </div>
@@ -109,7 +121,7 @@
           <div class="mil-vert-between">
             <div class="mil-mb-30">&nbsp;</div>
             <p class="mil-light-soft mil-up">
-              © Copyright 2025 - Maxsoft. Wszystkie prawa zastrzeżone.
+              {data.footertxt3}
             </p>
           </div>
         </div>

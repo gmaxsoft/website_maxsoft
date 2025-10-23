@@ -1,38 +1,29 @@
 ---
 const { langPrefix } = Astro.props;
-
-// Ustaw domyślną wartość, jeśli nie zostanie przekazana (np. "/pl")
 const prefix = langPrefix || "/pl";
+const { data } = Astro.props;
 ---
 
 <div class="mil-inner-banner mil-p-0-120">
   <div class="mil-banner-content mil-center mil-up">
     <div class="container">
       <ul class="mil-breadcrumbs mil-center mil-mb-60">
-        <li><a href="/pl">Start</a></li>
-        <li><a href="/pl/kontakt">Kontakt</a></li>
+        <li><a href={prefix} title="Start">Start</a></li>
+        <li><a href={`${prefix}/kontakt`} title={data.kontakttxt01}>{data.kontakttxt01}</a></li>
       </ul>
-      <h1 class="mil-mb-60">Skontaktuj się<br />z Nami</h1>
+      <h1 class="mil-mb-60" set:html={data.heading} />
 
       <div class="mil-divider mil-mb-60"></div>
       <div class="row justify-content-between">
         <div class="col-lg-5 mil-mb-60">
           <h6 class="mil-mb-30">Lubrza</h6>
 
-          <p class="mil-dark-soft mil-up">
-            66-218 Lubrza, Nowa Wioska 39<br />Polska<br /><span
-              class="mil-no-wrap">(+48) 791 821 908</span
-            >
-          </p>
+          <p class="mil-dark-soft mil-up" set:html={data.kontakttxt02} />
         </div>
         <div class="col-lg-5 mil-mb-60">
           <h6 class="mil-mb-30">Zielona Góra</h6>
 
-          <p class="mil-dark-soft">
-            65-463 Zielona Góra, ul.Prosta 45A<br />Polska<br /><span
-              class="mil-no-wrap">+(48) 453 645 286</span
-            >
-          </p>
+          <p class="mil-dark-soft" set:html={data.kontakttxt03} />
         </div>
       </div>
 
@@ -40,7 +31,7 @@ const prefix = langPrefix || "/pl";
         href="#contact"
         class="mil-link mil-dark mil-arrow-place mil-down-arrow"
       >
-        <span>Wyślij wiadomość</span>
+        <span>{data.kontakttxt04}</span>
       </a>
     </div>
   </div>
@@ -48,9 +39,7 @@ const prefix = langPrefix || "/pl";
 
 <section id="contact">
   <div class="container mil-p-120-90">
-    <h2 class="mil-center mil-up mil-mb-120">
-      Formularz <span class="mil-thin">Kontaktowy</span>
-    </h2>
+    <h2 class="mil-center mil-up mil-mb-120" set:html={data.kontakttxt05} />
     <form
       id="contactform"
       action="/api/contact"
@@ -62,7 +51,7 @@ const prefix = langPrefix || "/pl";
           type="text"
           name="name"
           id="name"
-          placeholder="Wpisz Imię i Nazwisko"
+          placeholder={data.kontakttxt13}
         />
       </div>
       <div class="col-lg-6 mil-up">
@@ -70,32 +59,32 @@ const prefix = langPrefix || "/pl";
           type="email"
           name="email"
           id="email"
-          placeholder="Wpisz adres e-mail"
+          placeholder={data.kontakttxt14}
         />
       </div>
       <div class="col-lg-12 mil-up">
         <select name="subject" id="subject">
-          <option value="">Wybierz temat</option>
-          <option value="Strona www">Strona www</option>
-          <option value="Sklep internetowy">Sklep internetowy</option>
-          <option value="Systemy CRM-ERP">Systemy CRM-ERP</option>
-          <option value="Współpraca">Współpraca</option>
+          <option value="">{data.kontakttxt06}</option>
+          <option value="Strona www">{data.kontakttxt07}</option>
+          <option value="Sklep internetowy">{data.kontakttxt08}</option>
+          <option value="Systemy CRM-ERP">{data.kontakttxt09}</option>
+          <option value="Współpraca">{data.kontakttxt10}</option>
         </select>
       </div>
       <div class="col-lg-12 mil-up">
-        <textarea name="message" id="message" placeholder="Treść wiadomości"
+        <textarea name="message" id="message" placeholder={data.kontakttxt15}
         ></textarea>
       </div>
       <div class="col-lg-8">
         <p class="mil-up mil-mb-30">
-          <span class="mil-accent">*</span> Firma Maxsoft, nie ujawnia Twoich danych
-          osobowych osobom trzecim.
+          <span class="mil-accent">*</span>
+          {data.kontakttxt11}
         </p>
       </div>
       <div class="col-lg-4">
         <div class="mil-adaptive-right mil-up mil-mb-30">
-          <button type="submit" class="mil-button mil-arrow-place">
-            <span>Wyślij wiadomość</span>
+          <button type="submit" class="mil-button mil-arrow-place" title={data.kontakttxt12}>
+            <span>{data.kontakttxt12}</span>
           </button>
         </div>
       </div>

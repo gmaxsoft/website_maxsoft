@@ -1,30 +1,39 @@
 ---
+export const prerender = true;
+
 import PageLayout from "../../layouts/PageLayout.astro";
 import ContentPartners from "../../components/ContentPartners.astro";
 import pl from "../../i18n/pl.json";
 import en from "../../i18n/en.json";
-// Mapa tłumaczeń
-const translations = { pl, en };
 
-// Eksport funkcji getStaticPaths dla dynamicznego routingu
+const translations = { pl, en };
 export async function getStaticPaths() {
-  return [
-    { params: { lang: "pl" } }, // Strona dla języka polskiego
-    { params: { lang: "en" } }, // Strona dla języka angielskiego
-  ];
+  return [{ params: { lang: "pl" } }, { params: { lang: "en" } }];
 }
 
-// Pobierz parametr lang z Astro.params
 const { lang } = Astro.params as { lang: "pl" | "en" };
+const langPrefix = `/${lang}`;
 
-// Użyj domyślnego języka 'pl', jeśli lang nie jest zdefiniowany
-const content = translations[lang]?.index || translations.pl.index;
+// 1. POBRANIE DANYCH DLA STRONY "OFERTA"
+const pageData = translations[lang]?.wspolpraca || translations.pl.wspolpraca;
+const contentFooter = translations[lang].footer;
+const contentMenu = translations[lang].menu;
+
+// 2. USTALENIE LINKU KANONICZNEGO
+const canonicalUrl = `${Astro.url.origin}/${lang}/wspolpraca`; // np. https://twojadomena.com/pl/oferta
 ---
 
 <PageLayout
-  title={content.title}
-  description={content.description}
-  ogImage="/images/home-og.jpg"
+  title={pageData.title}
+  description={pageData.description}
+  ogImage={pageData.ogimage || "/img/default-og.webp"}
+  currentLocale={lang}
+  canonical={canonicalUrl}
+  contentMenu={contentMenu}
+  contentFooter={contentFooter}
 >
-  <ContentPartners />
+  <>
+    <ContentPartners data={pageData} langPrefix={langPrefix} />
+    <div style="display:none" aria-hidden="true"></div>
+  </>
 </PageLayout>

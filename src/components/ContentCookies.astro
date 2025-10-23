@@ -1,0 +1,61 @@
+---
+const { langPrefix } = Astro.props;
+const prefix = langPrefix || "/pl";
+const { data } = Astro.props;
+---
+
+<div class="mil-inner-banner">
+  <div class="mil-banner-content mil-center mil-up">
+    <div class="container">
+      <ul class="mil-breadcrumbs mil-center mil-mb-60">
+        <li><a href={prefix} title="Start">Start</a></li>
+        <li><a href={`${prefix}/polityka_cookies`} title={data.cookiestxt01}>{data.cookiestxt01}</a></li>
+      </ul>
+      <h2 set:html={data.heading} />
+    </div>
+  </div>
+</div>
+
+<section id="blog">
+  <div class="container mil-p-120-90">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <p class="mil-text-xl mil-dark mil-up mil-mb-60">
+          {data.cookiestxt02}
+        </p>
+
+        <h5 class="mil-up mil-mb-60">
+          {data.cookiestxt03}
+        </h5>
+        <blockquote class="mil-up mil-mb-60">
+          <p class="mil-up mil-mb-30">
+            {data.cookiestxt04}
+          </p>
+          <p class="mil-up mil-mb-30">
+            {data.cookiestxt05}
+          </p>
+          <p class="mil-up mil-mb-30">
+            {data.cookiestxt06}
+          </p>
+        </blockquote>
+
+        <h5 class="mil-up mil-mb-60">{data.cookiestxt07}</h5>
+        <p class="mil-up mil-mb-30">
+          {data.cookiestxt08}
+        </p>
+        <p class="mil-up mil-mb-30">
+          {data.cookiestxt09}
+        </p>
+        <p class="mil-up mil-mb-30">
+          {data.cookiestxt10}
+        </p>
+        <p class="mil-up mil-mb-30">
+          {data.cookiestxt11}
+        </p>
+        <p class="mil-up mil-mb-30">
+          {data.cookiestxt12}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

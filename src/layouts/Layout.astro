@@ -4,22 +4,115 @@ import Preloader from "../components/Preloader.astro";
 import Menu from "../components/Menu.astro";
 import Footer from "../components/Footer.astro";
 import HiddenElements from "../components/HiddenElements.astro";
+import pl from "../i18n/pl.json";
+import en from "../i18n/en.json";
 
-// Domyślne wartości dla propsów, aby uniknąć undefined
+const translations = { pl, en };
+export async function getStaticPaths() {
+  return [
+    { params: { lang: "pl" } }, // Strona dla języka polskiego
+    { params: { lang: "en" } }, // Strona dla języka angielskiego
+  ];
+}
+
+const { lang } = Astro.params as { lang: "pl" | "en" };
+const langPrefix = `/${lang}`;
+const content = translations[lang]?.index || translations.pl.index;
+const contentFooter = translations[lang].footer;
+const contentMenu = translations[lang].menu;
+const contentPreloader = translations[lang].preloader;
+
 const {
-  title = "Domyślny tytuł",
-  description = "Domyślny opis",
-  ogImage = "/img/default-og.webp",
+  title = content.title, // Tytuł strony (np. z JSON)
+  description = content.description, // Opis strony (np. z JSON)
+  canonical = Astro.url.href, // 💡 NOWY PROP: Link kanoniczny
+  currentLocale = lang, // Język strony
+  ogImage = "/img/default-og.webp", // Obrazek OG
 } = Astro.props;
 
-// Pobierz aktualny język z kontekstu Astro, domyślnie 'pl'
-const currentLocale = Astro.currentLocale || "pl";
-const isHomePage = Astro.url.pathname === `/${currentLocale}/` || Astro.url.pathname === '/';
+const companyName = "MAXSOFT.PL";
+const mainWebsite = "https://www.maxsoft.pl";
+const mainLogo = `${mainWebsite}/img/logo-czarne.png`; // Upewnij się, że masz logo!
+
+// Dane dla obu lokalizacji
+const locations = [
+  {
+    name: "MAXSOFT Lubrza (Biuro Główne)",
+    address: {
+      streetAddress: "Nowa Wioska 39",
+      addressLocality: "Lubrza",
+      postalCode: "66-218",
+      addressCountry: "PL",
+    },
+    telephone: "+48791821908",
+    isPrimary: true, // Wskażemy, która jest główna
+  },
+  {
+    name: "MAXSOFT Zielona Góra (Oddział)",
+    address: {
+      streetAddress: "ul. Prosta 45A",
+      addressLocality: "Zielona Góra",
+      postalCode: "65-463",
+      addressCountry: "PL",
+    },
+    telephone: "+48453645286",
+    isPrimary: false,
+  },
+];
+
+// Generowanie obiektów LocalBusiness dla każdej lokalizacji
+const businessSchemas = locations.map((loc) => ({
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  // Użyj BusinessType, np. SoftwareCompany, WebDesign, itp.
+  // Zobacz listę typów LocalBusiness na Schema.org
+  name: loc.name,
+  url: mainWebsite,
+  image: mainLogo,
+  address: {
+    "@type": "PostalAddress",
+    ...loc.address,
+  },
+  telephone: loc.telephone,
+  hasMap: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${loc.address.streetAddress}, ${loc.address.addressLocality}`)}`, // Link do mapy
+
+  // Wskazanie na główną organizację
+  parentOrganization: {
+    "@type": "Organization",
+    name: companyName,
+    url: mainWebsite,
+  },
+  // Opcjonalne: Ustalenie, która jest główną lokalizacją
+  ...(loc.isPrimary ? { branchOf: mainWebsite } : {}),
+}));
+
+// Generowanie głównego schematu Organization
+const mainOrganizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: companyName,
+  url: mainWebsite,
+  logo: mainLogo,
+  // Używamy subOrganization, aby połączyć ją z oddziałami LocalBusiness
+  subOrganization: businessSchemas.map((schema) => ({
+    "@type": "LocalBusiness", // LocalBusiness jest podtypem Organization, więc działa
+    name: schema.name,
+    address: schema.address,
+    telephone: schema.telephone,
+  })),
+};
+
+// Połącz schematy w jeden array
+const allSchemas = [mainOrganizationSchema, ...businessSchemas];
 ---
 
 <!doctype html>
-<html lang={currentLocale}>
+<html lang={lang}>
   <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5402951867053415" crossorigin="anonymous"></script>
+    <link rel="alternate" hreflang="pl" href="https://maxsoft.pl/pl/" />
+    <link rel="alternate" hreflang="en" href="https://maxsoft.pl/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://maxsoft.pl/pl/" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
@@ -32,27 +125,31 @@ const isHomePage = Astro.url.pathname === `/${currentLocale}/` || Astro.url.path
           title: title,
           type: "website",
           image: ogImage,
-          url: Astro.url.href,
+          url: canonical, // Używamy kanonicznego URL
         },
-        image: {
-          alt: "Opis obrazu",
-        },
+        // ...
       }}
-      twitter={{
-        card: "summary_large_image",
-        site: "@twoj_twitter",
-      }}
+    />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(allSchemas, null, 2)}
     />
   </head>
   <body>
     <div class="mil-wrapper" id="top">
-      <Preloader />
-      <Menu />
+      <Preloader data={contentPreloader} langPrefix={langPrefix} />
+      <Menu data={contentMenu} langPrefix={langPrefix} lang={lang} />
       <div class="mil-curtain"></div>
 
       <div class="mil-frame">
         <div class="mil-frame-top mil-logo-fixed">
-          <a href={currentLocale} class="mil-logo">Maxsoft</a>
+          <a href={langPrefix} class="mil-logo">Maxsoft</a>
+
+          <div class="mil-lang-switch">
+                <a href="/pl" class:list={["mil-lang-flag", lang === 'pl' ? 'mil-active' : '']}>PL</a>
+                <a href="/en" class:list={["mil-lang-flag", lang === 'en' ? 'mil-active' : '']}>EN</a>
+          </div>
+
           <div class="mil-menu-btn">
             <span></span>
           </div>
@@ -61,7 +158,7 @@ const isHomePage = Astro.url.pathname === `/${currentLocale}/` || Astro.url.path
           <div class="mil-current-page"></div>
           <div class="mil-back-to-top">
             <a href="#top" class="mil-link mil-dark mil-arrow-place">
-              <span>Do góry</span>
+              <span>{content.softtxt17}</span>
             </a>
           </div>
         </div>
@@ -69,13 +166,15 @@ const isHomePage = Astro.url.pathname === `/${currentLocale}/` || Astro.url.path
       <div class="mil-content">
         <div class="mil-main-transition">
           <slot />
-          <Footer />
+          <Footer data={contentFooter} langPrefix={langPrefix} />
           <HiddenElements />
         </div>
       </div>
     </div>
 
-    <script type="module" src="/src/scripts/main.js"></script>
+    <script>
+      import "../scripts/main.js";
+    </script>
   </body>
 </html>
 

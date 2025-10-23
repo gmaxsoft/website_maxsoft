@@ -1,5 +1,7 @@
 ---
-
+const { langPrefix } = Astro.props;
+const prefix = langPrefix || "/pl";
+const { data } = Astro.props;
 ---
 
 <div class="mil-ball">
@@ -10,16 +12,16 @@
             ></path>
         </svg>
     </span>
-    <div class="mil-more-text">Więcej</div>
-    <div class="mil-choose-text">Wybierz</div>
+    <div class="mil-more-text">{data.title1}</div>
+    <div class="mil-choose-text">{data.title2}</div>
 </div>
 
 <div class="mil-preloader">
     <div class="mil-preloader-animation">
         <div class="mil-pos-abs mil-animation-1">
-            <p class="mil-h3 mil-muted mil-thin">Programowanie</p>
-            <p class="mil-h3 mil-muted">Integracje API</p>
-            <p class="mil-h3 mil-muted mil-thin">Bazy danych</p>
+            <p class="mil-h3 mil-muted mil-thin">{data.title3}</p>
+            <p class="mil-h3 mil-muted">{data.title4}</p>
+            <p class="mil-h3 mil-muted mil-thin">{data.title5}</p>
         </div>
         <div class="mil-pos-abs mil-animation-2">
             <div class="mil-reveal-frame">

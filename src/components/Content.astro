@@ -1,8 +1,7 @@
 ---
 const { langPrefix } = Astro.props;
-
-// Ustaw domyślną wartość, jeśli nie zostanie przekazana (np. "/pl")
 const prefix = langPrefix || "/pl";
+const { data } = Astro.props;
 ---
 
 <section class="mil-banner mil-dark-bg">
@@ -32,26 +31,29 @@ const prefix = langPrefix || "/pl";
 
     <div class="container">
       <div class="mil-banner-content mil-up">
-        <h1 class="mil-muted mil-mb-60">
-          <span class="mil-thin">Usługi</span> Programistyczne<br />
-          <span class="mil-thin">Dla</span> Biznesu
-        </h1>
+        <h1 class="mil-muted mil-mb-60" set:html={data.heading} />
         <div class="row">
           <div class="col-md-7 col-lg-5">
-            <p class="mil-light-soft mil-mb-60">
-              Kompleksowe usługi internetowe, w tym projektowanie stron i
-              sklepów internetowych, tworzenie aplikacji webowych, wdrożenia
-              systemów CMS/CRM/ERP oraz profesjonalne pozycjonowanie (SEO).
+            <p class="mil-light mil-mb-60">
+              {data.mainContent}
             </p>
           </div>
         </div>
 
-        <a href="pl/oferta" class="mil-button mil-arrow-place mil-btn-space">
-          <span>Oferta</span>
+        <a
+          href={`${prefix}/oferta`}
+          class="mil-button mil-arrow-place mil-btn-space"
+          title={data.linktxt1}
+        >
+          <span>{data.linktxt1}</span>
         </a>
 
-        <a href="pl/projekty" class="mil-link mil-muted mil-arrow-place">
-          <span>Projekty</span>
+        <a
+          href={`${prefix}/projekty`}
+          class="mil-link mil-muted mil-arrow-place"
+          title={data.linktxt2}
+        >
+          <span>{data.linktxt2}</span>
         </a>
 
         <div class="mil-circle-text">
@@ -77,16 +79,14 @@ const prefix = langPrefix || "/pl";
             <g>
               <use xlink:href="#circlePath" fill="none"></use>
               <text style="letter-spacing: 5.5px">
-                <textPath xlink:href="#circlePath"
-                  >Przewiń w dół - Przewiń w dół -
-                </textPath>
+                <textPath xlink:href="#circlePath">{data.circletxt}</textPath>
               </text>
             </g>
           </svg>
           <a
             href="#about"
             class="mil-button mil-arrow-place mil-icon-button mil-arrow-down"
-          ></a>
+            title="O nas"></a>
         </div>
       </div>
     </div>
@@ -98,33 +98,20 @@ const prefix = langPrefix || "/pl";
     <div class="row justify-content-between align-items-center">
       <div class="col-lg-6 col-xl-5">
         <div class="mil-mb-90">
-          <h2 class="mil-up mil-mb-60">
-            Czym się <span class="mil-thin">Zajmujemy?</span>
-          </h2>
+          <h2 class="mil-up mil-mb-60" set:html={data.aboutheading} />
           <p class="mil-up mil-mb-30 mil-txt-just">
-            Nasze produkcje charakteryzują się oryginalnymi pomysłami, z
-            zachowaniem najwyższych standardów technicznych i wizualnych.
-            Ogranicza nas tylko wyobraźnia.
+            {data.abouttxt1}
           </p>
-
           <p class="mil-up mil-mb-60 mil-txt-just">
-            Posiadamy wszytko to, co jest konieczne do tworzenia
-            najnowocześniejszych rozwiązań IT z wykorzystaniem najlepszych metod
-            i technologii. Rozwój aplikacji, integracja systemów, analiza i
-            ocena technologiczna to filary naszego procesu projektowania i
-            solidnej architektury.
+            {data.abouttxt2}
           </p>
-
           <div class="mil-about-quote">
             <div class="mil-avatar mil-up">
               <img src="/img/logo-czarne.png" alt="Logo Maxsoft" />
             </div>
-            <h6 class="mil-quote mil-up">
-              <span class="mil-thin"
-                >Projektowanie stron www, Sklepy internetowe, Systemy zarządania
-                firmą CRM, ERP</span
-              >
-            </h6>
+            <h4 class="mil-quote mil-up">
+              <span class="mil-thin">{data.abouttxt3}</span>
+            </h4>
           </div>
         </div>
       </div>
@@ -137,7 +124,7 @@ const prefix = langPrefix || "/pl";
           >
             <img
               src="/img/photo/programowanie.webp"
-              alt="img"
+              alt="Programista Zielona Góra"
               class="mil-scale effect-image"
             />
           </div>
@@ -147,7 +134,7 @@ const prefix = langPrefix || "/pl";
   </div>
 </section>
 
-<section class="mil-dark-bg mil-sekcja-ciemna">
+<section class="mil-dark-bg">
   <div class="mi-invert-fix">
     <div class="mil-animation-frame">
       <div
@@ -169,76 +156,75 @@ const prefix = langPrefix || "/pl";
       <div class="mil-mb-120">
         <div class="row">
           <div class="col-lg-10">
-            <span class="mil-suptitle mil-light-soft mil-suptitle-right mil-up"
-              >Nasza Firma to Profesjonaliści, którzy pomagają Twojej marce<br
-              />rozwijać się i iść naprzód.</span
-            >
+            <span
+              class="mil-suptitle mil-light-soft mil-suptitle-right mil-up"
+              set:html={data.ofertxt1}
+            />
           </div>
         </div>
 
         <div class="mil-complex-text justify-content-center mil-up mil-mb-15">
-          <h2 class="mil-h1 mil-muted mil-center">
-            Nasze <span class="mil-thin">Usługi</span>
-          </h2>
+          <h2 class="mil-h1 mil-muted mil-center" set:html={data.ofertxt2} />
         </div>
         <div class="mil-complex-text justify-content-center mil-up">
-          <h2 class="mil-h1 mil-muted mil-center">
-            <span class="mil-thin">Dla</span> Biznesu.
-          </h2>
+          <h2 class="mil-h1 mil-muted mil-center" set:html={data.ofertxt3} />
           <a
-            href="pl/oferta"
+            href={`${prefix}/oferta`}
             class="mil-services-button mil-button mil-arrow-place"
-            ><span>Zobacz ofertę</span></a
+            title={data.ofertxt4}><span>{data.ofertxt4}</span></a
           >
         </div>
       </div>
 
       <div class="row mil-services-grid m-0">
         <div class="col-md-6 col-lg-3 mil-services-grid-item p-0">
-          <a href="pl/oferta" class="mil-service-card-sm mil-up">
-            <h5 class="mil-muted mil-mb-30">
-              Tworzenie i optymalizacja <br />baz danych
-            </h5>
+          <a
+            href={`${prefix}/oferta`}
+            class="mil-service-card-sm mil-up"
+            title="Oferta projektowania stron www Zielona Góra"
+          >
+            <h5 class="mil-muted mil-mb-30" set:html={data.ofertxt5} />
             <p class="mil-light-soft mil-mb-30">
-              Projektowanie baz danych. Optymalizacja wykonywania zapytań w bazy
-              danych. SQL, MySQL, PostgreSQL, Oracle Database, MongoDB.
+              {data.ofertxt6}
             </p>
             <div class="mil-button mil-icon-button-sm mil-arrow-place"></div>
           </a>
         </div>
         <div class="col-md-6 col-lg-3 mil-services-grid-item p-0">
-          <a href="pl/oferta" class="mil-service-card-sm mil-up">
-            <h5 class="mil-muted mil-mb-30">
-              Projektowanie i aktualizacja<br />stron internetowych
-            </h5>
+          <a
+            href={`${prefix}/oferta`}
+            class="mil-service-card-sm mil-up"
+            title="Oferta projektowania stron www Świebodzin"
+          >
+            <h5 class="mil-muted mil-mb-30" set:html={data.ofertxt7} />
             <p class="mil-light-soft mil-mb-30">
-              Indywidualne projekty stron internetowych oparte o systemy
-              zarządzania treścią CMS takie jak WordPress czy Systemy Autorskie
-              na indywidualne zamówienie.
+              {data.ofertxt8}
             </p>
             <div class="mil-button mil-icon-button-sm mil-arrow-place"></div>
           </a>
         </div>
         <div class="col-md-6 col-lg-3 mil-services-grid-item p-0">
-          <a href="pl/oferta" class="mil-service-card-sm mil-up">
-            <h5 class="mil-muted mil-mb-30">
-              Sklepy internetowe i<br />systemy płatności
-            </h5>
+          <a
+            href={`${prefix}/oferta`}
+            class="mil-service-card-sm mil-up"
+            title="Oferta projektowania stron www Sulechów"
+          >
+            <h5 class="mil-muted mil-mb-30" set:html={data.ofertxt9} />
             <p class="mil-light-soft mil-mb-30">
-              Responsywne sklepy internetowe oparte o oprogramowanie PrestaShop,
-              WooCommerce, Magento.
+              {data.ofertxt10}
             </p>
             <div class="mil-button mil-icon-button-sm mil-arrow-place"></div>
           </a>
         </div>
         <div class="col-md-6 col-lg-3 mil-services-grid-item p-0">
-          <a href="pl/oferta" class="mil-service-card-sm mil-up">
-            <h5 class="mil-muted mil-mb-30">
-              Integracje API <br />dla stron i sklepów
-            </h5>
+          <a
+            href={`${prefix}/oferta`}
+            class="mil-service-card-sm mil-up"
+            title="Oferta projektowania stron www Nowa Sól"
+          >
+            <h5 class="mil-muted mil-mb-30" set:html={data.ofertxt11} />
             <p class="mil-light-soft mil-mb-30">
-              Integracje API dla systemów CRM, ERP, Wordpress, PrestaShop i
-              innych.
+              {data.ofertxt12}
             </p>
             <div class="mil-button mil-icon-button-sm mil-arrow-place"></div>
           </a>
@@ -252,17 +238,14 @@ const prefix = langPrefix || "/pl";
   <div class="container mil-p-120-120">
     <div class="row">
       <div class="col-lg-10">
-        <span class="mil-suptitle mil-suptitle-right mil-suptitle-dark mil-up">
-          Projektujemy nowoczesne i skuteczne witryny,<br />idealnie dopasowane
-          do Twojego biznesu</span
-        >
+        <span
+          class="mil-suptitle mil-suptitle-right mil-suptitle-dark mil-up"
+          set:html={data.softtxt1}
+        />
       </div>
     </div>
 
-    <h2 class="mil-center mil-up mil-mb-60">
-      <span class="mil-thin">W jakich</span> językach i frameworkach
-      <br /><span class="mil-thin">programowania tworzymy</span> Aplikacje?
-    </h2>
+    <h2 class="mil-center mil-up mil-mb-60" set:html={data.softtxt2} />
 
     <div class="mil-revi-pagination mil-up mil-mb-60"></div>
 
@@ -294,16 +277,10 @@ const prefix = langPrefix || "/pl";
               >
                 <h5 class="mil-up mil-mb-10">PHP</h5>
                 <p class="mil-mb-5 mil-upper mil-up mil-mb-30">
-                  Język programowania
+                  {data.softtxt3}
                 </p>
                 <p class="mil-text-xl mil-up">
-                  Skryptowy język programowania zaprojektowany do generowania
-                  stron internetowych i budowania aplikacji webowych w czasie
-                  rzeczywistym. PHP jest najczęściej stosowany do tworzenia
-                  skryptów po stronie serwera WWW, ale może być on również
-                  używany do przetwarzania danych z poziomu wiersza poleceń.
-                  Implementacja PHP wraz z serwerem WWW Apache oraz serwerem baz
-                  danych MySQL określana jest jako platforma AMP.
+                  {data.softtxt4}
                 </p>
               </div>
             </div>
@@ -315,16 +292,10 @@ const prefix = langPrefix || "/pl";
               >
                 <h5 class="mil-up mil-mb-10">React</h5>
                 <p class="mil-mb-5 mil-upper mil-up mil-mb-30">
-                  Biblioteka Javascript
+                  {data.softtxt5}
                 </p>
                 <p class="mil-text-xl mil-up">
-                  Biblioteka języka programowania JavaScript, która
-                  wykorzystywana jest do tworzenia interfejsów graficznych
-                  aplikacji internetowych. Została stworzona przez Jordana
-                  Walke, programistę Facebooka, a zainspirowana przez
-                  rozszerzenie języka PHP - XHP. Z głównych cech wyróżniających
-                  bibliotekę React.js jest wirtualny DOM. React przechowuje cały
-                  DOM aplikacji w pamięci.
+                  {data.softtxt6}
                 </p>
               </div>
             </div>
@@ -336,18 +307,10 @@ const prefix = langPrefix || "/pl";
               >
                 <h5 class="mil-up mil-mb-10">Javascript</h5>
                 <p class="mil-mb-5 mil-upper mil-up mil-mb-30">
-                  Język programowania
+                  {data.softtxt3}
                 </p>
                 <p class="mil-text-xl mil-up">
-                  Skryptowy oraz wieloparadygmatowy język programowania,
-                  stworzony przez firmę Netscape, najczęściej stosowany na
-                  stronach internetowych. Skrypty te służą najczęściej do
-                  zapewnienia interakcji poprzez reagowanie na zdarzenia,
-                  walidacji danych wprowadzanych w formularzach lub tworzenia
-                  złożonych efektów wizualnych. Skrypty JavaScriptu uruchamiane
-                  przez strony internetowe mają znacznie ograniczony dostęp do
-                  komputera użytkownika. Po stronie serwera JavaScript może
-                  działać w postaci Node.js.
+                  {data.softtxt7}
                 </p>
               </div>
             </div>
@@ -359,14 +322,10 @@ const prefix = langPrefix || "/pl";
               >
                 <h5 class="mil-up mil-mb-10">Html5</h5>
                 <p class="mil-mb-5 mil-upper mil-up mil-mb-30">
-                  Język znaczników
+                  {data.softtxt8}
                 </p>
                 <p class="mil-text-xl mil-up">
-                  Język znaczników wykorzystywany do tworzenia i prezentowania
-                  stron internetowych www. Jest rozwinięciem języka HTML 4 i
-                  jego XML-owej odmiany (XHTML 1), opracowywane w ramach prac
-                  grupy roboczej WHATWG (Web Hypertext Application Technology
-                  Working Group) i W3C
+                  {data.softtxt9}
                 </p>
               </div>
             </div>
@@ -378,15 +337,10 @@ const prefix = langPrefix || "/pl";
               >
                 <h5 class="mil-up mil-mb-10">Node.js</h5>
                 <p class="mil-mb-5 mil-upper mil-up mil-mb-30">
-                  Środowisko Javascript
+                  {data.softtxt10}
                 </p>
                 <p class="mil-text-xl mil-up">
-                  Wieloplatformowe środowisko uruchomieniowe o otwartym
-                  kodzie[2] do tworzenia aplikacji typu server-side napisanych w
-                  języku JavaScript. Przyczynił się do stworzenia paradygmatu
-                  "JavaScript everywhere", umożliwiając programistom tworzenie
-                  aplikacji w obrębie jednego języka programowania zamiast
-                  polegania na odrębnych po stronie serwerowej.
+                  {data.softtxt11}
                 </p>
               </div>
             </div>
@@ -398,16 +352,10 @@ const prefix = langPrefix || "/pl";
               >
                 <h5 class="mil-up mil-mb-10">Angular</h5>
                 <p class="mil-mb-5 mil-upper mil-up mil-mb-30">
-                  Otwarty framework
+                  {data.softtxt12}
                 </p>
                 <p class="mil-text-xl mil-up">
-                  Otwarty framework i platforma do tworzenia SPA, napisany w
-                  języku TypeScript i wspierany oraz rozwijany przez Google.
-                  Angular początkowo miał być wersją drugą frameworka AngularJS,
-                  jednak decyzje projektowe sprawiły, że Google zdecydował się
-                  wydać go jako osobny produkt, m.in. ze względu na brak
-                  kompatybilności wstecznej oraz prostej ścieżki aktualizacji
-                  aplikacji napisanych w AngularJS do Angulara 2.
+                  {data.softtxt13}
                 </p>
               </div>
             </div>
@@ -417,15 +365,12 @@ const prefix = langPrefix || "/pl";
                 data-swiper-parallax="-200"
                 data-swiper-parallax-opacity="0"
               >
-                <h5 class="mil-up mil-mb-10">Laravel</h5>
-                <p class="mil-mb-5 mil-upper mil-up mil-mb-30">PHP framework</p>
+                <h5 class="mil-up mil-mb-10">{data.softtxt14}</h5>
+                <p class="mil-mb-5 mil-upper mil-up mil-mb-30">
+                  {data.softtxt15}
+                </p>
                 <p class="mil-text-xl mil-up">
-                  framework do aplikacji internetowych napisany w języku PHP
-                  bazujący na wzorcu architektonicznym Model-View-Controller.
-                  Laravel udostępnia m.in. modułowy system budowania aplikacji z
-                  dedykowanym menedżerem zależności, różne sposoby dostępu do
-                  relacyjnych baz danych, narzędzia pomagające we wdrażaniu i
-                  utrzymaniu aplikacji
+                  {data.softtxt16}
                 </p>
               </div>
             </div>
@@ -441,67 +386,67 @@ const prefix = langPrefix || "/pl";
     <div class="swiper-container mil-infinite-show mil-up">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <a href="#." class="mil-partner-frame" style="width: 60px;"
+          <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/php.svg" alt="logo" /></a
           >
         </div>
         <div class="swiper-slide">
-          <a href="#." class="mil-partner-frame" style="width: 100px;"
+          <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/react.svg" alt="logo" /></a
           >
         </div>
         <div class="swiper-slide">
-          <a href="#." class="mil-partner-frame" style="width: 60px;"
+          <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/vuejs.svg" alt="logo" /></a
           >
         </div>
         <div class="swiper-slide">
-          <a href="#." class="mil-partner-frame" style="width: 100px;"
+          <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/postgresql.svg" alt="logo" /></a
           >
         </div>
         <div class="swiper-slide">
-          <a href="#." class="mil-partner-frame" style="width: 60px;"
+          <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/nodejs.svg" alt="logo" /></a
           >
         </div>
         <div class="swiper-slide">
-          <a href="#." class="mil-partner-frame" style="width: 100px;"
+          <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/mysql.svg" alt="logo" /></a
           >
         </div>
         <div class="swiper-slide">
-          <a href="#." class="mil-partner-frame" style="width: 60px;"
+          <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/javascript.svg" alt="logo" /></a
           >
         </div>
         <div class="swiper-slide">
-          <a href="#." class="mil-partner-frame" style="width: 100px;"
+          <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/jquery.svg" alt="logo" /></a
           >
         </div>
         <div class="swiper-slide">
-          <a href="#." class="mil-partner-frame" style="width: 100px;"
+          <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/css3.svg" alt="logo" /></a
           >
         </div>
         <div class="swiper-slide">
-          <a href="#." class="mil-partner-frame" style="width: 100px;"
+          <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/html5.svg" alt="logo" /></a
           >
         </div>
         <div class="swiper-slide">
-          <a href="#." class="mil-partner-frame" style="width: 100px;"
+          <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/angularjs.svg" alt="logo" /></a
           >
         </div>
         <div class="swiper-slide">
-          <a href="#." class="mil-partner-frame" style="width: 100px;"
+          <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/angular2.svg" alt="logo" /></a
           >
         </div>
         <div class="swiper-slide">
-          <a href="#." class="mil-partner-frame" style="width: 100px;"
+          <a href="#." class="mil-partner-frame max60"
             ><img src="/img/tech/laravel.svg" alt="logo" /></a
           >
         </div>

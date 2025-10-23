@@ -25,6 +25,10 @@ body {
     }
 }
 
+ul {
+    padding-left: 20px;
+}
+
 *::selection {
     color: inherit;
     background-color: transparent;
@@ -35,6 +39,8 @@ body {
     overflow: hidden;
     max-width: 100%;
 }
+
+.max60{width: 100px;}
 
 .container {
     pointer-events: all;

@@ -1,12 +1,14 @@
 import { defineConfig } from 'astro/config';
 import sharp from 'sharp'; // Opcjonalnie, dla szybszej transformacji
-import node from '@astrojs/node'; // 🚨 Dodaj adapter
+//import node from '@astrojs/node'; // 🚨 Dodaj adapter
 
 export default defineConfig({
-  output: 'server',
+  output: 'static',
+  /*
   adapter: node({
     mode: 'standalone',
   }),
+  */
   i18n: {
     defaultLocale: 'pl',
     locales: ['pl', 'en'],

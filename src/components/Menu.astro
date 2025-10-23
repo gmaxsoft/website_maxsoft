@@ -1,142 +1,150 @@
 ---
 const { langPrefix } = Astro.props;
-
+const { lang } = Astro.props;
 const prefix = langPrefix || "/pl";
+const { data } = Astro.props;
 ---
 
 <div class="mil-menu-frame">
-    <div class="mil-frame-top mil-logo-fixed">
-        <a href={prefix} class="mil-logo">Maxsoft</a>
-        <div class="mil-menu-btn">
-            <span></span>
-        </div>
+  <div class="mil-frame-top mil-logo-fixed">
+    <a href={prefix} class="mil-logo">Maxsoft</a>
+
+    <div class="mil-lang-switch">
+      <a
+        href="/pl"
+        class:list={["mil-lang-flag", lang === "pl" ? "mil-active" : ""]}>PL</a
+      >
+      <a
+        href="/en"
+        class:list={["mil-lang-flag", lang === "en" ? "mil-active" : ""]}>EN</a
+      >
     </div>
 
-    <div class="container">
-        <div class="mil-menu-content">
-            <div class="row">
-                <div class="col-xl-5">
-                    <nav class="mil-main-menu" id="swupMenu">
-                        <ul>
-                            <li class="mil-has-children mil-active">
-                                <a href="/pl">Start</a>
-                            </li>
-                            <li class="mil-has-children">
-                                <a href="/pl/oferta">Oferta</a>
-                            </li>
-                            <li class="mil-has-children">
-                                <a href="/pl/projekty">Projekty</a>
-                            </li>
-                            <li class="mil-has-children">
-                                <a href="/pl/wspolpraca">Współpraca</a>
-                            </li>
-                            <li class="mil-has-children">
-                                <a href="/pl/kontakt">Kontakt</a>
-                            </li>
-                        </ul>
-                    </nav>
+    <div class="mil-menu-btn">
+      <span></span>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="mil-menu-content">
+      <div class="row">
+        <div class="col-xl-4">
+          <nav class="mil-main-menu" id="swupMenu">
+            <ul>
+              <li class="mil-has-children mil-active">
+                <a href={prefix} title="Start">Start</a>
+              </li>
+              <li class="mil-has-children">
+                <a href={`${prefix}/oferta`} title={data.menutxt5}
+                  >{data.menutxt5}</a
+                >
+              </li>
+              <li class="mil-has-children">
+                <a href={`${prefix}/projekty`} title={data.menutxt6}
+                  >{data.menutxt6}</a
+                >
+              </li>
+              <li class="mil-has-children">
+                <a href={`${prefix}/wspolpraca`} title={data.menutxt7}
+                  >{data.menutxt7}</a
+                >
+              </li>
+              <li class="mil-has-children">
+                <a href={`${prefix}/kontakt`} title={data.menutxt8}
+                  >{data.menutxt8}</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="col-xl-8">
+          <div class="mil-menu-right-frame">
+            <div class="mil-animation-in">
+              <div class="mil-animation-frame">
+                <div
+                  class="mil-animation mil-position-1 mil-scale"
+                  data-value-1="2"
+                  data-value-2="2"
+                >
                 </div>
-                <div class="col-xl-7">
-                    <div class="mil-menu-right-frame">
-                        <div class="mil-animation-in">
-                            <div class="mil-animation-frame">
-                                <div
-                                    class="mil-animation mil-position-1 mil-scale"
-                                    data-value-1="2"
-                                    data-value-2="2"
-                                >
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mil-menu-right">
-                            <div class="row">
-                                <div class="col-lg-7 mil-mb-60">
-                                    <h6 class="mil-muted mil-mb-30">
-                                        Projekty
-                                    </h6>
-                                    <ul class="mil-menu-list">
-                                        <li>
-                                            <a
-                                                href="https://cms.maxsoft.pl"
-                                                class="mil-light-soft"
-                                                >Maxsoft CMS</a
-                                            >
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="https://crm.maxsoft.pl"
-                                                class="mil-light-soft"
-                                                >Maxsoft CRM</a
-                                            >
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="https://erp.maxsoft.pl"
-                                                class="mil-light-soft"
-                                                >Maxsoft ERP</a
-                                            >
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-5 mil-mb-60">
-                                    <h6 class="mil-muted mil-mb-30">
-                                        Pozostałe Linki
-                                    </h6>
-
-                                    <ul class="mil-menu-list">
-                                        <li>
-                                            <a
-                                                href="/pl/polityka_prywatnosci"
-                                                class="mil-light-soft"
-                                                >Polityka prywatności</a
-                                            >
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="/pl/polityka_cookies"
-                                                class="mil-light-soft"
-                                                >Polityka plików cookie</a
-                                            >
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="https://github.com/gmaxsoft"
-                                                rel="noreferrer nofollow"
-                                                class="mil-light-soft">Github</a
-                                            >
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="mil-divider mil-mb-60"></div>
-                            <div class="row justify-content-between">
-                                <div class="col-lg-5 mil-mb-60">
-                                    <h6 class="mil-muted mil-mb-30">Lubrza</h6>
-
-                                    <p class="mil-light-soft mil-up">
-                                        66-218 Lubrza, Nowa Wioska 39<br
-                                        />Polska<br /><span class="mil-no-wrap"
-                                            >(+48) 791 821 908</span
-                                        >
-                                    </p>
-                                </div>
-                                <div class="col-lg-5 mil-mb-60">
-                                    <h6 class="mil-muted mil-mb-30">
-                                        Zielona Góra
-                                    </h6>
-
-                                    <p class="mil-light-soft">
-                                        65-463 Zielona Góra, ul.Prosta 45A<br
-                                        />Polska<br /><span class="mil-no-wrap"
-                                            >+(48) 453 645 286</span
-                                        >
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
+            <div class="mil-menu-right">
+              <div class="row">
+                <div class="col-lg-7 mil-mb-60">
+                  <h6 class="mil-muted mil-mb-30">
+                    {data.menutxt1}
+                  </h6>
+                  <ul class="mil-menu-list">
+                    <li>
+                      <a
+                        href="https://cms.maxsoft.pl"
+                        class="mil-light-soft"
+                        title="Maxsoft CMS">Maxsoft CMS</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="https://crm.maxsoft.pl"
+                        class="mil-light-soft"
+                        title="Maxsoft CRM">Maxsoft CRM</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="https://erp.maxsoft.pl"
+                        class="mil-light-soft"
+                        title="Maxsoft ERP">Maxsoft ERP</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-lg-5 mil-mb-60">
+                  <h6 class="mil-muted mil-mb-30">
+                    {data.menutxt2}
+                  </h6>
+
+                  <ul class="mil-menu-list">
+                    <li>
+                      <a
+                        href={`${prefix}/polityka_prywatnosci`}
+                        class="mil-light-soft"
+                        title={data.menutxt9}>{data.menutxt9}</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href={`${prefix}/polityka_cookies`}
+                        class="mil-light-soft"
+                        title={data.menutxt10}>{data.menutxt10}</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="https://github.com/gmaxsoft"
+                        rel="noreferrer nofollow"
+                        class="mil-light-soft"
+                        title="Github">Github</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="mil-divider mil-mb-60"></div>
+              <div class="row justify-content-between">
+                <div class="col-lg-5 mil-mb-60">
+                  <h6 class="mil-muted mil-mb-30">Lubrza</h6>
+                  <p class="mil-light-soft mil-up" set:html={data.menutxt3} />
+                </div>
+                <div class="col-lg-5 mil-mb-60">
+                  <h6 class="mil-muted mil-mb-30">Zielona Góra</h6>
+                  <p class="mil-light-soft" set:html={data.menutxt4} />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

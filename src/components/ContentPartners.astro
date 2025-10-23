@@ -1,8 +1,7 @@
 ---
 const { langPrefix } = Astro.props;
-
-// Ustaw domyślną wartość, jeśli nie zostanie przekazana (np. "/pl")
 const prefix = langPrefix || "/pl";
+const { data } = Astro.props;
 ---
 
 <!-- banner -->
@@ -20,19 +19,18 @@ const prefix = langPrefix || "/pl";
         </div>
         <div class="container">
           <ul class="mil-breadcrumbs mil-light mil-mb-60">
-            <li><a href="/pl">Start</a></li>
-            <li><a href="/pl/wspolpraca">Współpraca</a></li>
+            <li><a href={prefix} title="Start">Start</a></li>
+            <li>
+              <a href={`${prefix}/wspolpraca`} title={data.wspolpracatxt01}
+                >{data.wspolpracatxt01}</a>
+            </li>
           </ul>
-          <h1 class="mil-muted mil-mb-60">
-            <span class="mil-thin">Ty wyznaczasz</span> Cel<br /><span
-              class="mil-thin">My</span
-            > dostarczamy rezultaty
-          </h1>
+          <h1 class="mil-muted mil-mb-60" set:html={data.heading} />
           <a
             href="#services"
             class="mil-link mil-accent mil-arrow-place mil-down-arrow"
           >
-            <span>Współpraca</span>
+            <span>{data.wspolpracatxt01}</span>
           </a>
         </div>
       </div>
@@ -52,68 +50,65 @@ const prefix = langPrefix || "/pl";
             <div class="row">
               <div class="col-md-6 col-lg-6">
                 <a
-                  href="/pl/oferta"
-                  class="mil-service-card-lg mil-more mil-accent-cursor mil-offset"
-                >
-                  <h4 class="mil-muted mil-up mil-mb-30">Współpraca B2B</h4>
-                  <p class="mil-descr mil-light-soft mil-up mil-mb-30">
-                    Nawiążemy współprace związaną z wzajemną wymianą usług i
-                    rozszerzaniem oferty dla klientów końcowych obu firm.
-                    Posiadamy szerokie doświadczenie w realizacjach
-                    przeprowadzanych dla firm.
-                  </p>
-                  <div class="mil-link mil-accent mil-arrow-place mil-up">
-                    <span>Sprawdź usługi</span>
-                  </div>
-                </a>
-              </div>
-              <div class="col-md-6 col-lg-6">
-                <a
-                  href="/pl/oferta"
-                  class="mil-service-card-lg mil-more mil-accent-cursor"
-                >
-                  <h4 class="mil-muted mil-up mil-mb-30">Doradztwo IT</h4>
-                  <p class="mil-descr mil-light-soft mil-up mil-mb-30">
-                    Pomożemy Ci zwiększyć efektywność Twojej firmy! Przeprowadź
-                    transformację cyfrową! Wykorzystaj IT do stworzenia przewagi
-                    konkurencyjnej na rynku.
-                  </p>
-                  <div class="mil-link mil-accent mil-arrow-place mil-up">
-                    <span>Sprawdź usługi</span>
-                  </div>
-                </a>
-              </div>
-              <div class="col-md-6 col-lg-6">
-                <a
-                  href="/pl/oferta"
+                  href={`${prefix}/oferta`}
                   class="mil-service-card-lg mil-more mil-accent-cursor mil-offset"
                 >
                   <h4 class="mil-muted mil-up mil-mb-30">
-                    Pozostałe formy współpracy
+                    {data.wspolpracatxt02}
                   </h4>
                   <p class="mil-descr mil-light-soft mil-up mil-mb-30">
-                    Wybierz model współpracy dostosowany do aktualnych potrzeb,
-                    Podejmij decyzję w zależności od wielkości, zakresu i czasu
-                    trwania projektu.
+                    {data.wspolpracatxt03}
                   </p>
                   <div class="mil-link mil-accent mil-arrow-place mil-up">
-                    <span>Sprawdź usługi</span>
+                    <span>{data.wspolpracatxt04}</span>
                   </div>
                 </a>
               </div>
               <div class="col-md-6 col-lg-6">
                 <a
-                  href="/pl/oferta"
+                  href={`${prefix}/oferta`}
                   class="mil-service-card-lg mil-more mil-accent-cursor"
                 >
-                  <h4 class="mil-muted mil-up mil-mb-30">Outsourcing IT</h4>
+                  <h4 class="mil-muted mil-up mil-mb-30">
+                    {data.wspolpracatxt05}
+                  </h4>
                   <p class="mil-descr mil-light-soft mil-up mil-mb-30">
-                    Możemy dostarczyć wysoce wykwalifikowanych konsultantów IT,
-                    którzy pomogą wzmocnić Twój zespół i ukończyć projekty na
-                    czas.
+                    {data.wspolpracatxt06}
                   </p>
                   <div class="mil-link mil-accent mil-arrow-place mil-up">
-                    <span>Sprawdź usługi</span>
+                    <span>{data.wspolpracatxt04}</span>
+                  </div>
+                </a>
+              </div>
+              <div class="col-md-6 col-lg-6">
+                <a
+                  href={`${prefix}/oferta`}
+                  class="mil-service-card-lg mil-more mil-accent-cursor mil-offset"
+                >
+                  <h4 class="mil-muted mil-up mil-mb-30">
+                    {data.wspolpracatxt07}
+                  </h4>
+                  <p class="mil-descr mil-light-soft mil-up mil-mb-30">
+                    {data.wspolpracatxt08}
+                  </p>
+                  <div class="mil-link mil-accent mil-arrow-place mil-up">
+                    <span>{data.wspolpracatxt04}</span>
+                  </div>
+                </a>
+              </div>
+              <div class="col-md-6 col-lg-6">
+                <a
+                  href={`${prefix}/oferta`}
+                  class="mil-service-card-lg mil-more mil-accent-cursor"
+                >
+                  <h4 class="mil-muted mil-up mil-mb-30">
+                    {data.wspolpracatxt09}
+                  </h4>
+                  <p class="mil-descr mil-light-soft mil-up mil-mb-30">
+                    {data.wspolpracatxt10}
+                  </p>
+                  <div class="mil-link mil-accent mil-arrow-place mil-up">
+                    <span>{data.wspolpracatxt04}</span>
                   </div>
                 </a>
               </div>
@@ -130,19 +125,20 @@ const prefix = langPrefix || "/pl";
 <section class="mil-soft-bg">
   <div class="container mil-p-120-120">
     <div class="row">
-      <div class="col-lg-10">
-        <span class="mil-suptitle mil-suptitle-right mil-suptitle-dark mil-up"
-          >Chcesz się wyróżnić? Pomożemy Ci przekształcić<br />Twój projekt w sukces.</span
-        >
-      </div>
+      <span class="col-lg-10">
+        <span
+          class="mil-suptitle mil-suptitle-right mil-suptitle-dark mil-up"
+          set:html={data.wspolpracatxt11}
+        />
+      </span>
     </div>
     <div class="mil-center">
-      <h2 class="mil-up mil-mb-60">
-        <span class="mil-thin">Stwórzmy wspólnie</span> nowoczesne projekty<br /><span class="mil-thin">Razem odniesiemy</span> sukces
-      </h2>
+      <h2 class="mil-up mil-mb-60" set:html={data.wspolpracatxt12} />
       <div class="mil-up">
-        <a href="/pl/kontakt" class="mil-button mil-arrow-place"
-          ><span>Skontaktuj się</span></a
+        <a
+          href={`${prefix}/kontakt`}
+          class="mil-button mil-arrow-place"
+          title={data.wspolpracatxt13}><span>{data.wspolpracatxt13}</span></a
         >
       </div>
     </div>

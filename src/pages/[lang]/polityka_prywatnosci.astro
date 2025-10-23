@@ -1,32 +1,38 @@
 ---
-// src/pages/[lang]/polityka_prywatnosci.astro
+export const prerender = true;
 
+import PageLayout from "../../layouts/PageLayout.astro";
+import ContentPolityka from "../../components/ContentPolityka.astro";
+import pl from "../../i18n/pl.json";
+import en from "../../i18n/en.json";
+
+const translations = { pl, en };
 export async function getStaticPaths() {
-  // Zdefiniuj listę obsługiwanych języków (lub innych dynamicznych parametrów)
-  const supportedLanguages = ['pl', 'en'];
-
-  // Zwróć tablicę obiektów 'params' dla każdej ścieżki
-  return supportedLanguages.map((lang) => ({
-    params: { lang }, // Tutaj 'lang' musi pasować do nazwy katalogu [lang]
-  }));
+  return [{ params: { lang: "pl" } }, { params: { lang: "en" } }];
 }
 
-// Przykład użycia parametru 'lang' w komponencie (opcjonalne, ale przydatne)
-const { lang } = Astro.params;
+const { lang } = Astro.params as { lang: "pl" | "en" };
+
+// 1. POBRANIE DANYCH DLA STRONY "OFERTA"
+const pageData = translations[lang]?.polityka || translations.pl.polityka;
+const contentFooter = translations[lang].footer;
+const contentMenu = translations[lang].menu;
+
+// 2. USTALENIE LINKU KANONICZNEGO
+const canonicalUrl = `${Astro.url.origin}/${lang}/polityka_prywatnosci`; // np. https://twojadomena.com/pl/oferta
 ---
 
-<!DOCTYPE html>
-<html lang={lang}>
-<head>
-    <title>Polityka prywatności | {lang.toUpperCase()}</title>
-</head>
-<body>
-    <h1>To jest strona Polityka prywatności ({lang.toUpperCase()})</h1>
-
-    {lang === 'pl' ? (
-        <p>Nasza oferta po polsku.</p>
-    ) : (
-        <p>Our offer in English.</p>
-    )}
-</body>
-</html>
+<PageLayout
+  title={pageData.title}
+  description={pageData.description}
+  ogImage={pageData.ogimage || "/img/default-og.webp"}
+  currentLocale={lang}
+  canonical={canonicalUrl}
+  contentMenu={contentMenu}
+  contentFooter={contentFooter}
+>
+  <>
+    <ContentPolityka data={pageData} />
+    <div style="display:none" aria-hidden="true"></div>
+  </>
+</PageLayout>

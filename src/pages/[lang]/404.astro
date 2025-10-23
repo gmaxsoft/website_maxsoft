@@ -1,22 +1,39 @@
 ---
+export const prerender = true;
+
 import ErrorLayout from "../../layouts/ErrorLayout.astro";
 import ErrorContent from "../../components/ErrorContent.astro";
+import pl from "../../i18n/pl.json";
+import en from "../../i18n/en.json";
 
+const translations = { pl, en };
 export async function getStaticPaths() {
-  // Zdefiniuj listę obsługiwanych języków (lub innych dynamicznych parametrów)
-  const supportedLanguages = ["pl", "en"];
-
-  // Zwróć tablicę obiektów 'params' dla każdej ścieżki
-  return supportedLanguages.map((lang) => ({
-    params: { lang }, // Tutaj 'lang' musi pasować do nazwy katalogu [lang]
-  }));
+  return [{ params: { lang: "pl" } }, { params: { lang: "en" } }];
 }
 
-const { lang } = Astro.params;
-// Ustaw status odpowiedzi na 404 (bardzo ważne!)
+const { lang } = Astro.params as { lang: "pl" | "en" };
+
+// 1. POBRANIE DANYCH DLA STRONY "OFERTA"
+const pageData = translations[lang]?.error || translations.pl.error;
+const contentFooter = translations[lang].footer;
+const contentMenu = translations[lang].menu;
+
+// 2. USTALENIE LINKU KANONICZNEGO
+const canonicalUrl = `${Astro.url.origin}/${lang}/404`; // np. https://twojadomena.com/pl/oferta
 Astro.response.status = 404;
 ---
 
-<ErrorLayout>
-  <ErrorContent />
+<ErrorLayout
+  title={pageData.title}
+  description={pageData.description}
+  ogImage={pageData.ogimage || "/img/default-og.webp"}
+  currentLocale={lang}
+  canonical={canonicalUrl}
+  contentMenu={contentMenu}
+  contentFooter={contentFooter}
+>
+  <>
+    <ErrorContent data={pageData} />
+    <div style="display:none" aria-hidden="true"></div>
+  </>
 </ErrorLayout>
