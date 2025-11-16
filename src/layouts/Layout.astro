@@ -4,6 +4,7 @@ import Preloader from "../components/Preloader.astro";
 import Menu from "../components/Menu.astro";
 import Footer from "../components/Footer.astro";
 import HiddenElements from "../components/HiddenElements.astro";
+import Seolink from "../components/Seolink.astro"; 
 import pl from "../i18n/pl.json";
 import en from "../i18n/en.json";
 
@@ -23,12 +24,14 @@ const contentMenu = translations[lang].menu;
 const contentPreloader = translations[lang].preloader;
 
 const {
+  canonical,
   title = content.title, // Tytuł strony (np. z JSON)
   description = content.description, // Opis strony (np. z JSON)
-  canonical = Astro.url.href, // 💡 NOWY PROP: Link kanoniczny
   currentLocale = lang, // Język strony
   ogImage = "/img/default-og.webp", // Obrazek OG
 } = Astro.props;
+
+const finalCanonical = canonical || (lang === 'pl' ? `https://www.maxsoft.pl/` : `https://www.maxsoft.pl${Astro.url.pathname}`);
 
 const companyName = "MAXSOFT.PL";
 const mainWebsite = "https://www.maxsoft.pl";
@@ -109,10 +112,6 @@ const allSchemas = [mainOrganizationSchema, ...businessSchemas];
 <!doctype html>
 <html lang={lang}>
   <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5402951867053415" crossorigin="anonymous"></script>
-    <link rel="alternate" hreflang="pl" href="https://maxsoft.pl/pl/" />
-    <link rel="alternate" hreflang="en" href="https://maxsoft.pl/en/" />
-    <link rel="alternate" hreflang="x-default" href="https://maxsoft.pl/pl/" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
@@ -120,16 +119,20 @@ const allSchemas = [mainOrganizationSchema, ...businessSchemas];
     <SEO
       title={title}
       description={description}
+      canonical={finalCanonical}
       openGraph={{
         basic: {
           title: title,
           type: "website",
           image: ogImage,
-          url: canonical, // Używamy kanonicznego URL
+          url: finalCanonical,
         },
         // ...
       }}
     />
+    <link rel="alternate" hreflang="pl" href="https://maxsoft.pl/" />
+    <link rel="alternate" hreflang="en" href="https://maxsoft.pl/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://maxsoft.pl/" />
     <script
       type="application/ld+json"
       set:html={JSON.stringify(allSchemas, null, 2)}
@@ -168,6 +171,7 @@ const allSchemas = [mainOrganizationSchema, ...businessSchemas];
           <slot />
           <Footer data={contentFooter} langPrefix={langPrefix} />
           <HiddenElements />
+          <Seolink />
         </div>
       </div>
     </div>
