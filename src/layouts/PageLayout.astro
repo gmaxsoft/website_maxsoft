@@ -21,21 +21,19 @@ const contentFooter = translations[lang].footer;
 const contentMenu = translations[lang].menu;
 
 const {
+  canonical,
   title = content.title, // Tytuł strony (np. z JSON)
   description = content.description, // Opis strony (np. z JSON)
-  canonical = Astro.url.href, // 💡 NOWY PROP: Link kanoniczny
   currentLocale = lang, // Język strony
   ogImage = "/img/default-og.webp", // Obrazek OG
 } = Astro.props;
+
+const resolvedCanonical = canonical || `https://www.maxsoft.pl${Astro.url.pathname}`;
 ---
 
 <!doctype html>
 <html lang={lang}>
   <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5402951867053415" crossorigin="anonymous"></script>
-    <link rel="alternate" hreflang="pl" href="https://maxsoft.pl/pl/" />
-    <link rel="alternate" hreflang="en" href="https://maxsoft.pl/en/" />
-    <link rel="alternate" hreflang="x-default" href="https://maxsoft.pl/pl/" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
@@ -43,12 +41,13 @@ const {
     <SEO
       title={title}
       description={description}
+      canonical={false}
       openGraph={{
         basic: {
           title: title,
           type: "website",
           image: ogImage,
-          url: canonical, // Używamy kanonicznego URL
+          url: resolvedCanonical,
         },
         // ...
       }}

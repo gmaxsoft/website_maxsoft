@@ -18,17 +18,13 @@ export async function getStaticPaths() {
 }
 
 // Pobierz parametr lang z Astro.params
-const { lang } = Astro.params as { lang: 'pl' | 'en' };
+const { lang } = Astro.params as { lang: "pl" | "en" };
+const langPrefix = `/${lang}`;
 
 // 1. POBRANIE DANYCH
 const pageData = translations[lang]?.index || translations.pl.index;
 const contentFooter = translations[lang].footer;
 const contentMenu = translations[lang].menu;
-
-// 2. USTALENIE LINKU KANONICZNEGO (Astro.url.origin + ścieżka bez lang, jeśli chcesz)
-const canonicalUrl = `${Astro.url.origin}/${lang}`; // np. https://twojadomena.com/pl
-
-// 3. PRZEKAZANIE DANYCH DO LAYOUTU
 ---
 
 <Layout 
@@ -36,9 +32,8 @@ const canonicalUrl = `${Astro.url.origin}/${lang}`; // np. https://twojadomena.c
     description={pageData.description}
     ogImage={pageData.ogimage}
     currentLocale={lang}
-    canonical={canonicalUrl}
     contentMenu={contentMenu}
     contentFooter={contentFooter}
 >
-    <Content data={pageData} />
+    <Content data={pageData} langPrefix={langPrefix} />
 </Layout>

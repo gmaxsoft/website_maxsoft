@@ -1,7 +1,7 @@
 {
   "index": {
-    "title": "Projektowanie Stron WWW Zielona Góra, Sklepy Internetowe Świebodzin, Integracje API",
-    "description": "Profesjonalne usługi programistyczne dla biznesu: projektowanie stron WWW, sklepy internetowe, systemy CRM/ERP w Zielonej Górze i Świebodzinie. Kompleksowe rozwiązania IT z SEO i wsparciem 24/7.",
+    "title": "Tworzenie stron Zielona Góra | Projektowanie stron internetowych Zielona Góra | Sklepy internetowe Zielona Góra",
+    "description": "Projektowanie, tworzenie stron internetowych Zielona Góra, Świebodzin, sklepy internetowe, integracje, systemy CRM. Kompleksowe rozwiązania IT.",
     "ogimage": "/img/default-og.webp",
     "heading": "<span class=\"mil-thin\">Usługi</span> Programistyczne<br /><span class=\"mil-thin\">Dla</span> Biznesu",
     "mainContent": "Kompleksowe usługi internetowe, w tym projektowanie stron i sklepów internetowych, tworzenie aplikacji webowych, wdrożenia systemów CMS/CRM/ERP oraz profesjonalne pozycjonowanie (SEO).",
@@ -46,8 +46,8 @@
     "footertxt1": "Zapisz się na nasz newsletter:",
     "footertxt2": "<strong>Tworzenie Stron www Zielona Góra</strong>, Świebodzin, aplikacje webowe, <strong>Projektowanie stron www</strong>, Systemy CRM, <strong>Sklepy internetowe Zielona Góra</strong>, Sulechów, Integracje Api, Optymalizacja baz danych, Projektowanie CMS",
     "footertxt3": "© Copyright 2025 - Maxsoft. Wszystkie prawa zastrzeżone.",
-    "footertxt4": "66-218 Lubrza<br />Nowa Wioska 39<br />Polska<br /><span class=\"mil-no-wrap\">(+48) 791 821 908</span>",
-    "footertxt5": "65-463 Zielona Góra<br />ul.Prosta 45A<br />Polska<br /><span class=\"mil-no-wrap\">+(48) 453 645 286</span>",
+    "footertxt4": "66-218 Lubrza<br />Nowa Wioska 39<br />Polska<br /><span class=\"mil-no-wrap\">(+48) 453 645 286</span>",
+    "footertxt5": "65-463 Zielona Góra<br />ul.Prosta 45A<br />Polska<br /><span class=\"mil-no-wrap\">(+48) 791 821 908</span>",
     "footertxt6": "Oferta",
     "footertxt7": "Projekty",
     "footertxt8": "Współpraca",
@@ -58,8 +58,8 @@
   "menu": {
     "menutxt1": "Projekty",
     "menutxt2": "Pozostałe Linki",
-    "menutxt3": "66-218 Lubrza<br />Nowa Wioska 39<br />Polska<br /><span class=\"mil-no-wrap\">(+48) 791 821 908</span>",
-    "menutxt4": "65-463 Zielona Góra<br />ul.Prosta 45A<br />Polska<br /><span class=\"mil-no-wrap\">+(48) 453 645 286</span>",
+    "menutxt3": "66-218 Lubrza<br />Nowa Wioska 39<br />Polska<br /><span class=\"mil-no-wrap\">(+48) 453 645 286</span>",
+    "menutxt4": "65-463 Zielona Góra<br />ul.Prosta 45A<br />Polska<br /><span class=\"mil-no-wrap\">(+48) 791 821 908</span>",
     "menutxt5": "Oferta",
     "menutxt6": "Projekty",
     "menutxt7": "Współpraca",
@@ -68,7 +68,7 @@
     "menutxt10": "Polityka plików cookie"
   },
   "oferta": {
-    "title": "Oferta: Strony WWW, Sklepy Internetowe, Systemy CRM Zielona Góra | Świebodzin",
+    "title": "Oferta: Tworzenie stron www, Sklepy Internetowe, Systemy CRM Zielona Góra | Świebodzin",
     "description": "Szczegółowa oferta Maxsoft: tworzenie stron WWW, responsywnych sklepów internetowych (PrestaShop, WooCommerce), systemów CRM/ERP oraz integracji API. Usługi dla firm w Zielonej Górze i Świebodzinie z optymalizacją SEO.",
     "heading": " Projektowanie <span class=\"mil-thin\">Systemów</span><br /><span class=\"mil-thin\">Zarządzania</span> firmą",
     "mainContent": "Ogranicza <span class=\"mil-thin\">Nas</span> tylko<br /><span class=\"mil-thin\">Wyobraźnia</span>",
@@ -124,7 +124,7 @@
     "ofertatxt50": "Integracje"
   },
   "projekty": {
-    "title": "Portfolio i Zrealizowane Projekty: Strony WWW, CRM Zielona Góra | Świebodzin",
+    "title": "Projekty stron: Strony www, systemy CRM Zielona Góra | Świebodzin",
     "description": "Przegląd projektów Maxsoft: nowoczesne strony WWW, sklepy internetowe i systemy CRM dla klientów z Zielonej Góry i Świebodzina. Zobacz nasze realizacje w PHP, JavaScript i więcej.",
     "heading": "<span class=\"mil-thin\">Najnowsze</span> projekty",
     "projektytxt01": "Projekty",

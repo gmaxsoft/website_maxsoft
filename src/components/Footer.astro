@@ -70,14 +70,14 @@ const { data } = Astro.props;
               <ul class="mil-menu-list mil-up mil-mb-60">
                 <li>
                   <a
-                    href="/pl/polityka_prywatnosci"
+                    href={`${prefix}/polityka_prywatnosci`}
                     class="mil-light-soft"
                     title={data.footertxt10}>{data.footertxt10}</a
                   >
                 </li>
                 <li>
                   <a
-                    href="/pl/polityka_cookies"
+                    href={`${prefix}/polityka_cookies`}
                     class="mil-light-soft"
                     title={data.footertxt11}>{data.footertxt11}</a
                   >
@@ -108,7 +108,7 @@ const { data } = Astro.props;
         <div class="col-md-7 col-lg-6">
           <div class="row justify-content-between">
             <div class="col-md-6 col-lg-5 mil-mb-60">
-              <h6 class="mil-muted mil-up mil-mb-30">Lubrza</h6>
+              <h6 class="mil-muted mil-up mil-mb-30">Świebodzin - Lubrza</h6>
               <p class="mil-light-soft mil-up" set:html={data.footertxt4} />
             </div>
             <div class="col-md-6 col-lg-5 mil-mb-60">

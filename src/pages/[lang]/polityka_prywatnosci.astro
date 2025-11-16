@@ -17,9 +17,6 @@ const { lang } = Astro.params as { lang: "pl" | "en" };
 const pageData = translations[lang]?.polityka || translations.pl.polityka;
 const contentFooter = translations[lang].footer;
 const contentMenu = translations[lang].menu;
-
-// 2. USTALENIE LINKU KANONICZNEGO
-const canonicalUrl = `${Astro.url.origin}/${lang}/polityka_prywatnosci`; // np. https://twojadomena.com/pl/oferta
 ---
 
 <PageLayout
@@ -27,7 +24,6 @@ const canonicalUrl = `${Astro.url.origin}/${lang}/polityka_prywatnosci`; // np. 
   description={pageData.description}
   ogImage={pageData.ogimage || "/img/default-og.webp"}
   currentLocale={lang}
-  canonical={canonicalUrl}
   contentMenu={contentMenu}
   contentFooter={contentFooter}
 >

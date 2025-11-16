@@ -544,18 +544,18 @@ function initApp() {
 document.addEventListener('DOMContentLoaded', () => {
     initPreloader();
     initApp();
+
     const form = document.getElementById('contactform');
 
     if (form) {
+        form.action = '/send_email.php';
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault(); // Zablokuj domyślną wysyłkę
 
             const formData = new FormData(form);
             const statusMessage = document.createElement('p');
             statusMessage.classList.add('mil-up');
-
-            // Przykład: Dodaj jakiś loader
-
             try {
                 const response = await fetch(form.action, {
                     method: form.method,
@@ -577,8 +577,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 statusMessage.style.color = 'red';
                 statusMessage.textContent = 'Błąd serwera. Spróbuj ponownie.';
             }
-
-            // Dodaj komunikat o statusie (możesz to zrobić ładniej w Twoim designie)
             form.after(statusMessage);
         });
     }

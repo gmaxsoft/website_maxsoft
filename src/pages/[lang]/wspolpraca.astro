@@ -18,9 +18,6 @@ const langPrefix = `/${lang}`;
 const pageData = translations[lang]?.wspolpraca || translations.pl.wspolpraca;
 const contentFooter = translations[lang].footer;
 const contentMenu = translations[lang].menu;
-
-// 2. USTALENIE LINKU KANONICZNEGO
-const canonicalUrl = `${Astro.url.origin}/${lang}/wspolpraca`; // np. https://twojadomena.com/pl/oferta
 ---
 
 <PageLayout
@@ -28,7 +25,6 @@ const canonicalUrl = `${Astro.url.origin}/${lang}/wspolpraca`; // np. https://tw
   description={pageData.description}
   ogImage={pageData.ogimage || "/img/default-og.webp"}
   currentLocale={lang}
-  canonical={canonicalUrl}
   contentMenu={contentMenu}
   contentFooter={contentFooter}
 >
