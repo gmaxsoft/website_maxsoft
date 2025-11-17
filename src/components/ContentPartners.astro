@@ -21,7 +21,7 @@ const { data } = Astro.props;
           <ul class="mil-breadcrumbs mil-light mil-mb-60">
             <li><a href={prefix} title="Start">Start</a></li>
             <li>
-              <a href={`${prefix}/wspolpraca`} title={data.wspolpracatxt01}
+              <a href={`${prefix}/wspolpraca/`} title={data.wspolpracatxt01}
                 >{data.wspolpracatxt01}</a>
             </li>
           </ul>
@@ -50,12 +50,12 @@ const { data } = Astro.props;
             <div class="row">
               <div class="col-md-6 col-lg-6">
                 <a
-                  href={`${prefix}/oferta`}
+                  href={`${prefix}/oferta/`}
                   class="mil-service-card-lg mil-more mil-accent-cursor mil-offset"
                 >
-                  <h4 class="mil-muted mil-up mil-mb-30">
+                  <h3 class="mil-muted mil-up mil-mb-30">
                     {data.wspolpracatxt02}
-                  </h4>
+                  </h3>
                   <p class="mil-descr mil-light-soft mil-up mil-mb-30">
                     {data.wspolpracatxt03}
                   </p>
@@ -66,12 +66,12 @@ const { data } = Astro.props;
               </div>
               <div class="col-md-6 col-lg-6">
                 <a
-                  href={`${prefix}/oferta`}
+                  href={`${prefix}/oferta/`}
                   class="mil-service-card-lg mil-more mil-accent-cursor"
                 >
-                  <h4 class="mil-muted mil-up mil-mb-30">
+                  <h3 class="mil-muted mil-up mil-mb-30">
                     {data.wspolpracatxt05}
-                  </h4>
+                  </h3>
                   <p class="mil-descr mil-light-soft mil-up mil-mb-30">
                     {data.wspolpracatxt06}
                   </p>
@@ -82,12 +82,12 @@ const { data } = Astro.props;
               </div>
               <div class="col-md-6 col-lg-6">
                 <a
-                  href={`${prefix}/oferta`}
+                  href={`${prefix}/oferta/`}
                   class="mil-service-card-lg mil-more mil-accent-cursor mil-offset"
                 >
-                  <h4 class="mil-muted mil-up mil-mb-30">
+                  <h3 class="mil-muted mil-up mil-mb-30">
                     {data.wspolpracatxt07}
-                  </h4>
+                  </h3>
                   <p class="mil-descr mil-light-soft mil-up mil-mb-30">
                     {data.wspolpracatxt08}
                   </p>
@@ -98,12 +98,12 @@ const { data } = Astro.props;
               </div>
               <div class="col-md-6 col-lg-6">
                 <a
-                  href={`${prefix}/oferta`}
+                  href={`${prefix}/oferta/`}
                   class="mil-service-card-lg mil-more mil-accent-cursor"
                 >
-                  <h4 class="mil-muted mil-up mil-mb-30">
+                  <h3 class="mil-muted mil-up mil-mb-30">
                     {data.wspolpracatxt09}
-                  </h4>
+                  </h3>
                   <p class="mil-descr mil-light-soft mil-up mil-mb-30">
                     {data.wspolpracatxt10}
                   </p>
@@ -136,7 +136,7 @@ const { data } = Astro.props;
       <h2 class="mil-up mil-mb-60" set:html={data.wspolpracatxt12} />
       <div class="mil-up">
         <a
-          href={`${prefix}/kontakt`}
+          href={`${prefix}/kontakt/`}
           class="mil-button mil-arrow-place"
           title={data.wspolpracatxt13}><span>{data.wspolpracatxt13}</span></a
         >

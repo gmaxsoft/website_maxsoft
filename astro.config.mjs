@@ -4,11 +4,13 @@ import node from '@astrojs/node'; // 🚨 Dodaj adapter
 
 export default defineConfig({
   site: 'https://maxsoft.pl',
-  output: 'server',
+  output: 'static',
   trailingSlash: 'always',
+  /*
   adapter: node({
     mode: 'standalone',
   }),
+  */
   i18n: {
     defaultLocale: 'pl',
     locales: ['pl', 'en'],

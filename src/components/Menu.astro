@@ -11,11 +11,11 @@ const { data } = Astro.props;
 
     <div class="mil-lang-switch">
       <a
-        href="/pl"
+        href="/pl/"
         class:list={["mil-lang-flag", lang === "pl" ? "mil-active" : ""]}>PL</a
       >
       <a
-        href="/en"
+        href="/en/"
         class:list={["mil-lang-flag", lang === "en" ? "mil-active" : ""]}>EN</a
       >
     </div>
@@ -35,22 +35,22 @@ const { data } = Astro.props;
                 <a href={prefix} title="Start">Start</a>
               </li>
               <li class="mil-has-children">
-                <a href={`${prefix}/oferta`} title={data.menutxt5}
+                <a href={`${prefix}/oferta/`} title={data.menutxt5}
                   >{data.menutxt5}</a
                 >
               </li>
               <li class="mil-has-children">
-                <a href={`${prefix}/projekty`} title={data.menutxt6}
+                <a href={`${prefix}/projekty/`} title={data.menutxt6}
                   >{data.menutxt6}</a
                 >
               </li>
               <li class="mil-has-children">
-                <a href={`${prefix}/wspolpraca`} title={data.menutxt7}
+                <a href={`${prefix}/wspolpraca/`} title={data.menutxt7}
                   >{data.menutxt7}</a
                 >
               </li>
               <li class="mil-has-children">
-                <a href={`${prefix}/kontakt`} title={data.menutxt8}
+                <a href={`${prefix}/kontakt/`} title={data.menutxt8}
                   >{data.menutxt8}</a
                 >
               </li>
@@ -107,14 +107,14 @@ const { data } = Astro.props;
                   <ul class="mil-menu-list">
                     <li>
                       <a
-                        href={`${prefix}/polityka_prywatnosci`}
+                        href={`${prefix}/polityka_prywatnosci/`}
                         class="mil-light-soft"
                         title={data.menutxt9}>{data.menutxt9}</a
                       >
                     </li>
                     <li>
                       <a
-                        href={`${prefix}/polityka_cookies`}
+                        href={`${prefix}/polityka_cookies/`}
                         class="mil-light-soft"
                         title={data.menutxt10}>{data.menutxt10}</a
                       >
